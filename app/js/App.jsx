@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useCallback } from 'react';
+import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import Icon from './icons.jsx';
 import { useApp } from './store.jsx';
 import { createIndex, plan, hubIdFor } from './planner.js';
@@ -8,6 +8,7 @@ import Results from './screens/Results.jsx';
 import Journey from './screens/Journey.jsx';
 import Data from './screens/Data.jsx';
 import About from './screens/About.jsx';
+import Splash, { MIN_VISIBLE_MS, MAX_HOLD_MS } from './Splash.jsx';
 
 export default function App() {
   const { state, dispatch, showToast } = useApp();
@@ -27,6 +28,31 @@ export default function App() {
   }, []);
 
   const index = useMemo(() => (graph ? createIndex(graph) : null), [graph]);
+
+  // The splash covers the graph fetch. It is on screen for at least
+  // MIN_VISIBLE_MS measured from mount, so a warm cache does not produce a
+  // flash, and it lets go as soon as the data is in — or at MAX_HOLD_MS, so a
+  // slow network can never trap anyone behind it.
+  const mountedAt = useRef(performance.now());
+  const [splashPhase, setSplashPhase] = useState('shown'); // shown | leaving | gone
+
+  const dismissSplash = useCallback(() => {
+    setSplashPhase((phase) => (phase === 'shown' ? 'leaving' : phase));
+    window.setTimeout(() => setSplashPhase('gone'), 320); // matches --duration-slow
+  }, []);
+
+  useEffect(() => {
+    if (!graph && !error) return undefined;
+    const elapsed = performance.now() - mountedAt.current;
+    const wait = Math.max(0, MIN_VISIBLE_MS - elapsed);
+    const t = window.setTimeout(dismissSplash, wait);
+    return () => window.clearTimeout(t);
+  }, [graph, error, dismissSplash]);
+
+  useEffect(() => {
+    const ceiling = window.setTimeout(dismissSplash, MAX_HOLD_MS);
+    return () => window.clearTimeout(ceiling);
+  }, [dismissSplash]);
 
   const runPlan = useCallback(() => {
     if (!index) return;
@@ -134,15 +160,27 @@ export default function App() {
     );
   }
 
+  // Hold the splash through the fetch: there is nothing useful to show yet, and
+  // the rest of the app would render as a second, competing loader.
+  if (splashPhase !== 'gone') {
+    return (
+      <div className="appframe">
+        <div className="app" aria-hidden="true" />
+        <Splash leaving={splashPhase === 'leaving'} />
+      </div>
+    );
+  }
+
   if (!graph) {
     return (
       <div className="appframe">
         <div className="app">
           <div className="screen" style={{ justifyContent: 'center', padding: 24 }}>
-            <div className="planning" aria-live="polite">
-              <div className="planning__row"><span className="spinner" /> Loading the historical route graph…</div>
-              <div className="planning__bar" />
-              <div className="planning__bar" style={{ width: '72%' }} />
+            <div className="empty">
+              <span className="empty__icon"><Icon.route size={26} /></span>
+              <h3>The route data is taking longer than usual</h3>
+              <p>Eko Way needs the recorded route graph before it can plan a journey.</p>
+              <button className="btn btn--primary" onClick={() => location.reload()}>Try again</button>
             </div>
           </div>
         </div>
