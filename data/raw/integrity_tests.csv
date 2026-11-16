@@ -1,0 +1,6 @@
+test,passed,detail
+All route edges disabled for public directions,True,Historical records must not appear as verified live directions.
+No Keke invented from source,True,Source feed contains no Keke vehicle class.
+Intermediate boarding permissions not assumed,True,Intermediate stops retained as descriptive route trace only.
+Yaba to Lekki candidate passes through Obalende,True,Historical candidate chain uses a shared Obalende stop ID.
+Official FLM routes kept outside ride graph,True,External corridor names require exact node mapping and service validation.
