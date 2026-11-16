@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="en-NG">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eko Way — Design System v1.0</title>
+<meta name="description" content="Style guide and design system for Eko Way, a Lagos danfo and bus-route navigation product. Colour, type, space, components, screen library and handoff tokens.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/tokens.css">
+<link rel="stylesheet" href="styles/components.css">
+<link rel="stylesheet" href="styles/screens.css">
+</head>
+<body>
+
+<!-- ============================== ICON SPRITE ============================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6.5v14L9 18l6 2.5 6-2.5v-14L15 6.5 9 4zM9 4v14M15 6.5v14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M3 8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 8v8" stroke="currentColor" stroke-width="1.8" stroke-dasharray="2 2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 20c1.2-3.6 4-5.4 7.5-5.4s6.3 1.8 7.5 5.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h13l-3-3M20 16H7l3 3" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3.5" y="8" width="17" height="11.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 8V6.2A2.2 2.2 0 0 1 11.2 4h1.6A2.2 2.2 0 0 1 15 6.2V8M3.5 12.5h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 10h16M8 7h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 16.5V20M17 16.5V20" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="8" cy="13" r="1" fill="currentColor"/><circle cx="16" cy="13" r="1" fill="currentColor"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 15v-3l2-5h12l2 5v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><rect x="3" y="14.5" width="18" height="4" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7.5" cy="18.5" r="1.4" fill="currentColor"/><circle cx="16.5" cy="18.5" r="1.4" fill="currentColor"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"/></symbol>
+    <symbol id="i-crosshair" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="2" fill="currentColor"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 9a6 6 0 1 1 12 0c0 4 1.5 5.5 1.5 5.5H4.5S6 13 6 9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 18.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.7 5.6 6.1.8-4.5 4.2 1.1 6-5.4-3-5.4 3 1.1-6L3.2 9.9l6.1-.8z" fill="currentColor"/></symbol>
+    <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="18" r="2.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.6 6H15a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h6.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="3 3"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="14.5" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 2.5v6c0 4.5-3 7.6-7 9.5-4-1.9-7-5-7-9.5v-6z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2.2 2.2L15.5 10" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7a2 2 0 0 1 2-2.2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="16" cy="7" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="10" cy="17" r="2.2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-seat" viewBox="0 0 24 24"><path d="M6 4h6a3 3 0 0 1 3 3v7H9a3 3 0 0 1-3-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 14v6M18 14v6M15 14h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-speed" viewBox="0 0 24 24"><path d="M4 17a9 9 0 1 1 16 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="m12 14 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><circle cx="12" cy="14" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 8.5a15 15 0 0 1 19 0M6 12.5a10 10 0 0 1 12 0M9.5 16.4a4.6 4.6 0 0 1 5 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="19.5" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-signal" viewBox="0 0 24 24"><path d="M4 18v-3M9 18v-6M14 18v-9M19 18V6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-battery" viewBox="0 0 24 24"><rect x="2" y="7.5" width="17" height="9" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".45"/><rect x="3.6" y="9.1" width="12" height="5.8" rx="1.3" fill="currentColor"/><path d="M21 11v2" stroke="currentColor" stroke-width="1.6" opacity=".45"/></symbol>
+  </defs>
+</svg>
+
+<div class="sg-shell">
+
+  <!-- ============================== SIDE NAV ============================== -->
+  <aside class="sg-nav">
+    <a class="sg-nav__brand" href="#top">
+      <span class="sg-nav__mark"><svg width="20" height="20"><use href="#i-bus"/></svg></span>
+      <span>
+        <span class="sg-nav__title">Eko Way</span><br>
+        <span class="sg-nav__version">Design system v1.0</span>
+      </span>
+    </a>
+
+    <div class="sg-nav__group">
+      <p class="sg-nav__label">Foundations</p>
+      <a href="#brand">Brand &amp; principles</a>
+      <a href="#colour">Colour</a>
+      <a href="#type">Typography</a>
+      <a href="#space">Space &amp; layout</a>
+      <a href="#shape">Shape &amp; elevation</a>
+      <a href="#motion">Motion</a>
+      <a href="#iconography">Iconography</a>
+    </div>
+
+    <div class="sg-nav__group">
+      <p class="sg-nav__label">Components</p>
+      <a href="#buttons">Buttons</a>
+      <a href="#inputs">Inputs &amp; route</a>
+      <a href="#chips">Chips &amp; tags</a>
+      <a href="#cards">Cards &amp; tiles</a>
+      <a href="#lists">Lists &amp; fares</a>
+      <a href="#map">Map</a>
+      <a href="#navigation">Navigation</a>
+      <a href="#feedback">Feedback</a>
+    </div>
+
+    <div class="sg-nav__group">
+      <p class="sg-nav__label">Product</p>
+      <a href="#screens">Screen library</a>
+      <a href="#flows">Flows</a>
+      <a href="#content">Content &amp; voice</a>
+      <a href="#a11y">Accessibility</a>
+      <a href="#handoff">Handoff</a>
+    </div>
+  </aside>
+
+  <!-- ============================== MAIN ============================== -->
+  <main class="sg-main" id="top">
+
+    <!-- HERO -->
+    <header class="sg-hero">
+      <span class="sg-kicker"><span class="dot" style="background:var(--yellow-500)"></span> Lagos · danfo · bus routes</span>
+      <h1 class="t-display" style="margin-top:var(--space-4);max-width:20ch">One yellow.<br>Everything in its place.</h1>
+      <p class="t-body" style="max-width:64ch;margin-top:var(--space-4);color:var(--text-secondary)">
+        Eko Way gets Lagos moving on shared transport — danfo, keke and BRT — with live route search,
+        nearby stops, fare clarity and offline-first ticketing. This single document consolidates every
+        screen we have explored into one system: tokens, type, components and nine shippable screens.
+      </p>
+
+      <div class="row" style="margin-top:var(--space-6);flex-wrap:wrap;gap:var(--space-6)">
+        <div class="stat"><span class="stat__value">1.0.0</span><span class="stat__label">Version</span></div>
+        <div class="stat"><span class="stat__value">9</span><span class="stat__label">Screens</span></div>
+        <div class="stat"><span class="stat__value">62</span><span class="stat__label">Tokens</span></div>
+        <div class="stat"><span class="stat__value">AA</span><span class="stat__label">WCAG 2.2 baseline</span></div>
+        <div class="stat"><span class="stat__value">390×844</span><span class="stat__label">Design canvas</span></div>
+      </div>
+    </header>
+
+    <!-- ============================== 1. BRAND ============================== -->
+    <section class="sg-section" id="brand">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">01 — Foundations</p>
+          <h2 class="t-h1">Brand &amp; principles</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Eko Way is the passenger's instrument for a system that is loud, informal and constantly
+        rerouting. The design answers that with one high-confidence colour, hard edges and
+        typography that reads in glare and traffic.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6)">
+        <div class="sg-card">
+          <h3 class="t-h4">The promise</h3>
+          <p class="t-body-sm t-muted" style="margin-top:var(--space-2)">“Know your way before you move.” Every screen answers one of three questions: <strong>where is it</strong>, <strong>what does it cost</strong>, <strong>am I on time</strong>.</p>
+        </div>
+        <div class="sg-card">
+          <h3 class="t-h4">Who it is for</h3>
+          <p class="t-body-sm t-muted" style="margin-top:var(--space-2)">Daily commuters, students and traders who already read the street. They need speed and certainty, not hand-holding.</p>
+        </div>
+        <div class="sg-card">
+          <h3 class="t-h4">Where it lives</h3>
+          <p class="t-body-sm t-muted" style="margin-top:var(--space-2)">Android-first, mid-range devices, patchy data, bright sun, one thumb, 15 seconds of attention at a bus stop.</p>
+        </div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">Six principles</h3>
+      <div class="grid-auto" style="margin-top:var(--space-4)">
+        <div class="sg-card"><span class="tag tag--brand">01</span><h4 class="t-h4" style="margin-top:var(--space-3)">Legible in sunlight</h4><p class="t-body-sm t-muted" style="margin-top:var(--space-1)">No 12px grey on grey. Body text is 16px minimum and every pairing clears 4.5:1 — checked, not assumed.</p></div>
+        <div class="sg-card"><span class="tag tag--brand">02</span><h4 class="t-h4" style="margin-top:var(--space-3)">One decision per screen</h4><p class="t-body-sm t-muted" style="margin-top:var(--space-1)">A route search, a fare, a driver. When a screen asks for two decisions, it becomes a sheet.</p></div>
+        <div class="sg-card"><span class="tag tag--brand">03</span><h4 class="t-h4" style="margin-top:var(--space-3)">Yellow means act</h4><p class="t-body-sm t-muted" style="margin-top:var(--space-1)">The brand colour is a signal, not wallpaper. If it is yellow, it is tappable, live or in motion.</p></div>
+        <div class="sg-card"><span class="tag tag--brand">04</span><h4 class="t-h4" style="margin-top:var(--space-3)">Numbers are the interface</h4><p class="t-body-sm t-muted" style="margin-top:var(--space-1)">Fares, ETAs, stops and seat counts use tabular display figures so they line up and never jitter.</p></div>
+        <div class="sg-card"><span class="tag tag--brand">05</span><h4 class="t-h4" style="margin-top:var(--space-3)">Works with no signal</h4><p class="t-body-sm t-muted" style="margin-top:var(--space-1)">Cached routes, offline tickets, explicit stale states. Never a blank screen and a spinner for 20 seconds.</p></div>
+        <div class="sg-card"><span class="tag tag--brand">06</span><h4 class="t-h4" style="margin-top:var(--space-3)">Street, not Silicon Valley</h4><p class="t-body-sm t-muted" style="margin-top:var(--space-1)">Hand-painted signage, hard shadows, real place names. No glassmorphism, no lavender gradients.</p></div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">Logo &amp; lockup</h3>
+      <div class="grid-auto" style="margin-top:var(--space-4)">
+        <div class="sg-specimen" style="background:var(--yellow-400)">
+          <div class="wordmark">
+            <span class="wordmark__mark"><svg width="24" height="24"><use href="#i-bus"/></svg></span>
+            <span class="wordmark__text">Eko <em>Way</em></span>
+          </div>
+          <p class="t-caption" style="margin-top:var(--space-4);color:rgba(11,11,10,.7)">Primary lockup on brand yellow</p>
+        </div>
+        <div class="sg-specimen" style="background:var(--ink-900)">
+          <div class="wordmark wordmark--inverse">
+            <span class="wordmark__mark"><svg width="24" height="24"><use href="#i-bus"/></svg></span>
+            <span class="wordmark__text">Eko <em>Way</em></span>
+          </div>
+          <p class="t-caption" style="margin-top:var(--space-4);color:var(--ink-300)">Inverse lockup for dark surfaces</p>
+        </div>
+        <div class="sg-specimen">
+          <span class="wordmark__mark" style="width:64px;height:64px;border-radius:var(--radius-md)">
+            <svg width="34" height="34"><use href="#i-bus"/></svg>
+          </span>
+          <p class="t-caption" style="margin-top:var(--space-4)">App icon: mark only, 18% corner radius</p>
+        </div>
+      </div>
+
+      <div class="sg-sticky-note" style="margin-top:var(--space-4)">
+        <strong>Clear space &amp; minimum size.</strong> Keep 24px of clear space on every side of the
+        lockup (half the mark's height). Never place the wordmark over the map, a photo or a busy
+        illustration. Minimum lockup width 120px; mark alone 24px. The mark is a front-on danfo
+        ticket with a route line — never rotate, re-colour or add an outline.
+      </div>
+    </section>
+
+    <!-- ============================== 2. COLOUR ============================== -->
+    <section class="sg-section" id="colour">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">02 — Foundations</p>
+          <h2 class="t-h1">Colour</h2>
+        </div>
+        <span class="tag tag--neutral">3 ramps · 5 accents</span>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        The palette is taken from the thing itself: the yellow of a danfo, the black of its bodywork,
+        the warm off-white of a paper ticket. Accents exist only to carry meaning on maps and status —
+        they are never used for decoration.
+      </p>
+
+      <h3 class="t-h3">Eko Yellow — primary</h3>
+      <p class="t-caption" style="margin-top:var(--space-1);margin-bottom:var(--space-3)">Core: <code>#FFD100</code> · ramp <code>--yellow-50 → --yellow-800</code></p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#FFFDF2"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Yellow 50</span><span class="sg-swatch__hex">#FFFDF2 · tint</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#FFF6CF"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Yellow 100</span><span class="sg-swatch__hex">#FFF6CF · soft bg</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#FFEC9C"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Yellow 200</span><span class="sg-swatch__hex">#FFEC9C · focus halo</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#FFE056"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Yellow 300</span><span class="sg-swatch__hex">#FFE056 · hover</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#FFD100"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Yellow 400</span><span class="sg-swatch__hex">#FFD100 · brand</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#F5C400"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Yellow 500</span><span class="sg-swatch__hex">#F5C400 · pressed</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#D9AC00"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Yellow 600</span><span class="sg-swatch__hex">#D9AC00 · rules</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#7A6200"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Yellow 700</span><span class="sg-swatch__hex">#7A6200 · text only</span></div></div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">Ink — neutrals</h3>
+      <p class="t-caption" style="margin-top:var(--space-1);margin-bottom:var(--space-3)">Core: <code>#0B0B0A</code> · warm-shifted so it sits with yellow instead of fighting it</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#F5F5F3"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Ink 50</span><span class="sg-swatch__hex">#F5F5F3</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#E8E8E4"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Ink 100</span><span class="sg-swatch__hex">#E8E8E4 · dividers</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#CFCFC9"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Ink 200</span><span class="sg-swatch__hex">#CFCFC9 · card edge</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#A9A9A2"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Ink 300</span><span class="sg-swatch__hex">#A9A9A2 · disabled text</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#86867F"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Ink 350</span><span class="sg-swatch__hex">#86867F · control edge</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#7A7A74"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Ink 400</span><span class="sg-swatch__hex">#7A7A74 · icons</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#55554F"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Ink 500</span><span class="sg-swatch__hex">#55554F · secondary text</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#232320"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Ink 700</span><span class="sg-swatch__hex">#232320 · hover ink</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#0B0B0A"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Ink 900</span><span class="sg-swatch__hex">#0B0B0A · brand black</span></div></div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">Wayfinding accents</h3>
+      <p class="t-caption" style="margin-top:var(--space-1);margin-bottom:var(--space-3)">Only for map states, status and validation. Never as a background fill for a whole screen.</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#11A05F"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Go / live</span><span class="sg-swatch__hex">#11A05F · on route</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#E23D2E"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Stop / error</span><span class="sg-swatch__hex">#E23D2E · alert</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#E07B00"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">Delay</span><span class="sg-swatch__hex">#E07B00 · warning</span></div></div>
+        <div class="sg-swatch"><div class="sg-swatch__chip" style="background:#1B6DD1"></div><div class="sg-swatch__meta"><span class="sg-swatch__name">You</span><span class="sg-swatch__hex">#1B6DD1 · user dot</span></div></div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">Semantic mapping</h3>
+      <p class="t-caption" style="margin-top:var(--space-1);margin-bottom:var(--space-3)">Components must reference the alias, never the ramp. That is what lets dark mode ship as a token swap.</p>
+      <table class="sg-table" style="background:var(--bg-surface);border-radius:var(--radius-md)">
+        <thead><tr><th>Token</th><th>Resolves to</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td><code>--bg-canvas</code></td><td>paper-200</td><td>App background behind cards</td></tr>
+          <tr><td><code>--bg-brand</code></td><td>yellow-400</td><td>Primary CTA fill, brand screens, active tab indicator</td></tr>
+          <tr><td><code>--bg-brand-soft</code></td><td>yellow-100</td><td>Selected fare row, icon plates, quiet highlights</td></tr>
+          <tr><td><code>--bg-inverse</code></td><td>ink-900</td><td>Splash, sheets over map, sticker shadows</td></tr>
+          <tr><td><code>--text-primary</code></td><td>ink-900</td><td>All headings and body</td></tr>
+          <tr><td><code>--text-secondary</code></td><td>ink-500</td><td>Supporting copy, meta, field labels</td></tr>
+          <tr><td><code>--text-tertiary</code></td><td>#6A6A64</td><td>Placeholders, hints — the floor for readable grey</td></tr>
+          <tr><td><code>--text-brand</code></td><td>#7A6200</td><td>Brand-coloured <em>text</em>. Yellow 400 is never text.</td></tr>
+          <tr><td><code>--border-control</code></td><td>ink-350</td><td>Input outlines that must clear the 3:1 UI threshold</td></tr>
+          <tr><td><code>--border-strong</code></td><td>ink-900</td><td>Sticker tiles, outlined buttons, selected fare</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">Contrast — measured, not assumed</h3>
+      <p class="sg-caption t-caption" style="margin-top:var(--space-1);margin-bottom:var(--space-3)">WCAG 2.2: 4.5:1 body text, 3:1 large text (≥18.66px bold / 24px) and UI boundaries.</p>
+      <table class="sg-table" style="background:var(--bg-surface);border-radius:var(--radius-md)">
+        <thead><tr><th>Pairing</th><th>Ratio</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>Ink 900 on Yellow 400 <span class="t-caption">(CTA)</span></td><td><strong>13.48</strong></td><td><span class="tag tag--success">AAA</span></td></tr>
+          <tr><td>Ink 900 on Paper 50 <span class="t-caption">(body)</span></td><td><strong>19.69</strong></td><td><span class="tag tag--success">AAA</span></td></tr>
+          <tr><td>Ink 500 on Paper 50 <span class="t-caption">(secondary)</span></td><td><strong>7.50</strong></td><td><span class="tag tag--success">AAA</span></td></tr>
+          <tr><td>#6A6A64 on Paper 50 <span class="t-caption">(tertiary)</span></td><td><strong>5.44</strong></td><td><span class="tag tag--success">AA</span></td></tr>
+          <tr><td>#7A6200 on Paper 50 <span class="t-caption">(brand text)</span></td><td><strong>5.87</strong></td><td><span class="tag tag--success">AA</span></td></tr>
+          <tr><td>Ink 500 on Yellow 400 <span class="t-caption">(search placeholder)</span></td><td><strong>5.14</strong></td><td><span class="tag tag--success">AA</span></td></tr>
+          <tr><td>Ink 350 on Paper 50 <span class="t-caption">(control edge, non-text)</span></td><td><strong>3.66</strong></td><td><span class="tag tag--success">AA non-text</span></td></tr>
+          <tr><td>Ink 400 on Paper 50</td><td><strong>4.32</strong></td><td><span class="tag tag--warning">Large text only</span></td></tr>
+          <tr><td>Yellow 600 on Paper 50</td><td><strong>2.13</strong></td><td><span class="tag tag--danger">Fails — never text</span></td></tr>
+          <tr><td>White on Yellow 400</td><td><strong>1.46</strong></td><td><span class="tag tag--danger">Fails — never</span></td></tr>
+        </tbody>
+      </table>
+
+      <div class="sg-do-dont" style="margin-top:var(--space-5)">
+        <div class="sg-do"><span class="sg-do__label">Do</span> Put ink on yellow. One yellow surface per screen, reserved for the thing you want tapped.</div>
+        <div class="sg-dont"><span class="sg-dont__label">Don't</span> Put white text on yellow, use yellow as body text, or introduce a second accent to “balance” the screen.</div>
+      </div>
+    </section>
+
+    <!-- ============================== 3. TYPOGRAPHY ============================== -->
+    <section class="sg-section" id="type">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">03 — Foundations</p>
+          <h2 class="t-h1">Typography</h2>
+        </div>
+        <span class="tag tag--neutral">Space Grotesk + Inter</span>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Two families, one voice. <strong>Space Grotesk</strong> carries display and screen titles — its
+        squared terminals echo painted signage and stay legible at a glance.
+        <strong>Inter</strong> carries everything you read rather than scan. Fares and ETAs always take
+        tabular figures so columns align and numbers never shift width.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6)">
+        <div class="sg-card">
+          <p class="t-eyebrow">Display · Space Grotesk</p>
+          <p style="font-family:var(--font-display);font-size:var(--text-38);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-top:var(--space-2)">Abeokuta<br>to Oshodi</p>
+          <p class="t-caption" style="margin-top:var(--space-3)">500 / 600 / 700 · tracking −3% at display sizes</p>
+        </div>
+        <div class="sg-card">
+          <p class="t-eyebrow">Text · Inter</p>
+          <p class="t-body" style="margin-top:var(--space-2)">The danfo leaves when it fills. Tap the stop to see live departures and the fare before you board — no haggling, no guessing.</p>
+          <p class="t-caption" style="margin-top:var(--space-3)">400 / 500 / 600 / 700 · tracking 0</p>
+        </div>
+        <div class="sg-card">
+          <p class="t-eyebrow">Numerals · tabular</p>
+          <p style="font-family:var(--font-display);font-size:var(--text-30);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em;margin-top:var(--space-2)">₦650 · 08:42<br>₦1,200 · 12 min</p>
+          <p class="t-caption" style="margin-top:var(--space-3)">Always <code>t-num</code>; never proportional figures in a list of fares</p>
+        </div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">Scale</h3>
+      <p class="t-caption" style="margin-top:var(--space-1);margin-bottom:var(--space-3)">16px root, 1.25 ratio, hand-tuned below 16px. Line-height tightens as size grows.</p>
+      <div class="sg-specimen stack-4">
+        <div class="row-between" style="align-items:baseline;border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-3)">
+          <span class="t-display">Know your way</span>
+          <span class="t-caption t-mono">display · 48/1.08 · −3%</span>
+        </div>
+        <div class="row-between" style="align-items:baseline;border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-3)">
+          <span class="t-hero">Find your way</span>
+          <span class="t-caption t-mono">hero · 38/1.08 · −3%</span>
+        </div>
+        <div class="row-between" style="align-items:baseline;border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-3)">
+          <span class="t-h1">Page title</span>
+          <span class="t-caption t-mono">h1 · 30/1.24 · −1.5%</span>
+        </div>
+        <div class="row-between" style="align-items:baseline;border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-3)">
+          <span class="t-h2">Screen title</span>
+          <span class="t-caption t-mono">h2 · 24/1.24</span>
+        </div>
+        <div class="row-between" style="align-items:baseline;border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-3)">
+          <span class="t-h3">Section title</span>
+          <span class="t-caption t-mono">h3 · 20/1.24 · 600</span>
+        </div>
+        <div class="row-between" style="align-items:baseline;border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-3)">
+          <span class="t-h4">Card title</span>
+          <span class="t-caption t-mono">h4 · 18/1.24 · 600</span>
+        </div>
+        <div class="row-between" style="align-items:baseline;border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-3)">
+          <span class="t-body">Body — the danfo leaves when it fills.</span>
+          <span class="t-caption t-mono">body · 16/1.45</span>
+        </div>
+        <div class="row-between" style="align-items:baseline;border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-3)">
+          <span class="t-body-sm">Small body — leaves from Oshodi every 4 min.</span>
+          <span class="t-caption t-mono">body-sm · 14/1.45</span>
+        </div>
+        <div class="row-between" style="align-items:baseline;border-bottom:1px solid var(--border-subtle);padding-bottom:var(--space-3)">
+          <span class="t-caption">Caption — 2 min walk from the junction</span>
+          <span class="t-caption t-mono">caption · 12/1.45</span>
+        </div>
+        <div class="row-between" style="align-items:baseline">
+          <span class="t-eyebrow">Eyebrow / caps label</span>
+          <span class="t-caption t-mono">eyebrow · 11/1.45 · +8%</span>
+        </div>
+      </div>
+
+      <div class="sg-do-dont" style="margin-top:var(--space-5)">
+        <div class="sg-do"><span class="sg-do__label">Do</span> Use 16px minimum for any text that is read. Keep lines under 70 characters. Use <code>text-wrap: balance</code> on headlines.</div>
+        <div class="sg-dont"><span class="sg-dont__label">Don't</span> Use all-caps for sentences, letterspace body copy, or fake bold with a faux embolden. One display face, always.</div>
+      </div>
+    </section>
+
+    <!-- ============================== 4. SPACE & LAYOUT ============================== -->
+    <section class="sg-section" id="space">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">04 — Foundations</p>
+          <h2 class="t-h1">Space &amp; layout</h2>
+        </div>
+        <span class="tag tag--neutral">4pt grid</span>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Everything sits on a 4pt grid. Spacing communicates grouping, so related items use
+        <code>--space-2</code> (8) or less, groups use <code>--space-4</code> (16), and sections use
+        <code>--space-8</code> (32) or more. If a gap is not on the grid, it is not a token.
+      </p>
+
+      <div class="sg-specimen" style="margin-top:var(--space-6)">
+        <div class="stack-3">
+          <div class="row"><span class="t-mono" style="width:74px">--space-1</span><span style="height:14px;width:4px;background:var(--ink-900)"></span><span class="t-caption">4 · icon↔label</span></div>
+          <div class="row"><span class="t-mono" style="width:74px">--space-2</span><span style="height:14px;width:8px;background:var(--ink-900)"></span><span class="t-caption">8 · inside chips, tight stacks</span></div>
+          <div class="row"><span class="t-mono" style="width:74px">--space-3</span><span style="height:14px;width:12px;background:var(--ink-900)"></span><span class="t-caption">12 · list row internals</span></div>
+          <div class="row"><span class="t-mono" style="width:74px">--space-4</span><span style="height:14px;width:16px;background:var(--ink-900)"></span><span class="t-caption">16 · screen gutter, card padding</span></div>
+          <div class="row"><span class="t-mono" style="width:74px">--space-5</span><span style="height:14px;width:20px;background:var(--ink-900)"></span><span class="t-caption">20 · button horizontal padding</span></div>
+          <div class="row"><span class="t-mono" style="width:74px">--space-6</span><span style="height:14px;width:24px;background:var(--ink-900)"></span><span class="t-caption">24 · between field groups</span></div>
+          <div class="row"><span class="t-mono" style="width:74px">--space-8</span><span style="height:14px;width:32px;background:var(--ink-900)"></span><span class="t-caption">32 · between sections</span></div>
+          <div class="row"><span class="t-mono" style="width:74px">--space-12</span><span style="height:14px;width:48px;background:var(--ink-900)"></span><span class="t-caption">48 · splash / marketing rhythm</span></div>
+        </div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">App shell anatomy</h3>
+      <div class="grid-auto" style="margin-top:var(--space-4)">
+        <div class="sg-card">
+          <p class="t-eyebrow">Vertical rhythm</p>
+          <table class="sg-table" style="margin-top:var(--space-2)">
+            <tbody>
+              <tr><td>Status bar</td><td><code>54px</code> — content never sits inside it</td></tr>
+              <tr><td>Header</td><td>64px, greet + location pin</td></tr>
+              <tr><td>Body</td><td>scrolls, <code>--space-4</code> side gutter</td></tr>
+              <tr><td>Sheet / CTA</td><td>pinned above tab bar, 24px bottom inset</td></tr>
+              <tr><td>Tab bar</td><td><code>78px</code> + safe-area inset</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sg-card">
+          <p class="t-eyebrow">Responsive rules</p>
+          <ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)">
+            <li><strong>≤ 360px</strong> — gutter drops to 12px, service grid goes 1-up.</li>
+            <li><strong>390–430px</strong> — reference layout. Gutter 16px, 2-up tiles.</li>
+            <li><strong>≥ 768px</strong> — phone frame centres at 390px on a neutral canvas; no fluid re-layout of product screens.</li>
+            <li><strong>Map</strong> is always full-bleed edge-to-edge; sheets overlay it, never shrink it.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 5. SHAPE & ELEVATION ============================== -->
+    <section class="sg-section" id="shape">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">05 — Foundations</p>
+          <h2 class="t-h1">Shape &amp; elevation</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Corners are generous, then the brand adds one hard edge: the <strong>sticker shadow</strong> —
+        a 4px un-blurred ink offset. It appears on hero tiles and nothing else, so it keeps the feeling
+        of a painted sign rather than becoming a texture.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6)">
+        <div class="sg-card" style="text-align:center">
+          <div style="height:88px;border-radius:var(--radius-xs);background:var(--yellow-400);border:2px solid var(--ink-900)"></div>
+          <p class="t-mono t-caption" style="margin-top:var(--space-2)">--radius-xs · 6</p>
+        </div>
+        <div class="sg-card" style="text-align:center">
+          <div style="height:88px;border-radius:var(--radius-sm);background:var(--yellow-400);border:2px solid var(--ink-900)"></div>
+          <p class="t-mono t-caption" style="margin-top:var(--space-2)">--radius-sm · 10</p>
+        </div>
+        <div class="sg-card" style="text-align:center">
+          <div style="height:88px;border-radius:var(--radius-md);background:var(--yellow-400);border:2px solid var(--ink-900)"></div>
+          <p class="t-mono t-caption" style="margin-top:var(--space-2)">--radius-md · 14</p>
+        </div>
+        <div class="sg-card" style="text-align:center">
+          <div style="height:88px;border-radius:var(--radius-lg);background:var(--yellow-400);border:2px solid var(--ink-900)"></div>
+          <p class="t-mono t-caption" style="margin-top:var(--space-2)">--radius-lg · 20</p>
+        </div>
+        <div class="sg-card" style="text-align:center">
+          <div style="height:88px;border-radius:var(--radius-2xl) var(--radius-2xl) 0 0;background:var(--yellow-400);border:2px solid var(--ink-900)"></div>
+          <p class="t-mono t-caption" style="margin-top:var(--space-2)">--radius-2xl · 36 (sheet)</p>
+        </div>
+        <div class="sg-card" style="text-align:center">
+          <div style="height:88px;border-radius:var(--radius-pill);background:var(--yellow-400);border:2px solid var(--ink-900)"></div>
+          <p class="t-mono t-caption" style="margin-top:var(--space-2)">--radius-pill · buttons</p>
+        </div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">Elevation</h3>
+      <div class="sg-swatches" style="margin-top:var(--space-4);grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">
+        <div style="background:var(--bg-surface);border-radius:var(--radius-md);padding:var(--space-6) var(--space-4);box-shadow:var(--shadow-xs)"><span class="t-mono t-caption">--shadow-xs</span><p class="t-body-sm">Cards at rest</p></div>
+        <div style="background:var(--bg-surface);border-radius:var(--radius-md);padding:var(--space-6) var(--space-4);box-shadow:var(--shadow-md)"><span class="t-mono t-caption">--shadow-md</span><p class="t-body-sm">Map pins, popovers</p></div>
+        <div style="background:var(--bg-surface);border-radius:var(--radius-md);padding:var(--space-6) var(--space-4);box-shadow:var(--shadow-lg)"><span class="t-mono t-caption">--shadow-lg</span><p class="t-body-sm">Floating search bar</p></div>
+        <div style="background:var(--bg-surface);border-radius:var(--radius-md) var(--radius-md) 0 0;padding:var(--space-6) var(--space-4);box-shadow:var(--shadow-sheet)"><span class="t-mono t-caption">--shadow-sheet</span><p class="t-body-sm">Bottom sheets, tab bar</p></div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">The sticker shadow</h3>
+      <div class="sg-specimen" style="margin-top:var(--space-4);display:flex;gap:var(--space-6);flex-wrap:wrap;align-items:center">
+        <div class="tile" style="width:160px">
+          <svg class="tile__icon"><use href="#i-bus"/></svg>
+          <span class="tile__label">Sticker tile</span>
+        </div>
+        <div style="max-width:52ch">
+          <p class="t-body-sm">Use on hero service tiles at most twice per screen. Never on buttons, inputs, sheets or anything that scrolls with the page. It is ink-on-yellow only — on dark surfaces it switches to the brand yellow (see dark theme tokens).</p>
+          <code class="sg-code" style="margin-top:var(--space-3)">box-shadow: 4px 4px 0 var(--ink-900);</code>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 6. MOTION ============================== -->
+    <section class="sg-section" id="motion">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">06 — Foundations</p>
+          <h2 class="t-h1">Motion</h2>
+        </div>
+        <span class="tag tag--neutral">Nothing over 380ms</span>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Motion should feel like a bus pulling in: quick to arrive, decisive, then still. Hover the rails
+        below to compare easings. Everything collapses to 0ms under
+        <code>prefers-reduced-motion</code> — the tokens already handle it.
+      </p>
+
+      <div class="sg-specimen" style="margin-top:var(--space-6)">
+        <div class="motion-demo" style="--demo-duration:220ms;--demo-ease:var(--ease-standard)">
+          <div class="row-between"><span class="t-body-sm"><strong>--ease-standard</strong> · cubic-bezier(.2,0,0,1)</span><span class="t-mono t-caption">--duration-base · 220ms</span></div>
+          <div class="motion-track"><div class="motion-rail"><span class="motion-dot"></span></div></div>
+          <p class="t-caption">Default for colour, opacity and small transforms.</p>
+        </div>
+        <hr class="divider" style="margin:var(--space-4) 0">
+        <div class="motion-demo" style="--demo-duration:380ms;--demo-ease:var(--ease-out)">
+          <div class="row-between"><span class="t-body-sm"><strong>--ease-out</strong> · cubic-bezier(.16,1,.3,1)</span><span class="t-mono t-caption">--duration-sheet · 380ms</span></div>
+          <div class="motion-track"><div class="motion-rail"><span class="motion-dot"></span></div></div>
+          <p class="t-caption">Sheets entering, screens pushing, map recentre.</p>
+        </div>
+        <hr class="divider" style="margin:var(--space-4) 0">
+        <div class="motion-demo" style="--demo-duration:320ms;--demo-ease:var(--ease-spring)">
+          <div class="row-between"><span class="t-body-sm"><strong>--ease-spring</strong> · cubic-bezier(.34,1.4,.64,1)</span><span class="t-mono t-caption">--duration-slow · 320ms</span></div>
+          <div class="motion-track"><div class="motion-rail"><span class="motion-dot"></span></div></div>
+          <p class="t-caption">Confirmations only: ticket issued, seat booked, driver found.</p>
+        </div>
+      </div>
+
+      <table class="sg-table" style="margin-top:var(--space-5);background:var(--bg-surface);border-radius:var(--radius-md)">
+        <thead><tr><th>Moment</th><th>Token</th><th>Spec</th></tr></thead>
+        <tbody>
+          <tr><td>Button press</td><td><code>--duration-instant</code></td><td>translateY(1px), scale .995</td></tr>
+          <tr><td>Tab switch</td><td><code>--duration-fast</code></td><td>Cross-fade only, no slide</td></tr>
+          <tr><td>Bottom sheet</td><td><code>--duration-sheet</code></td><td>translateY 100% → 0, ease-out, scrim fades to 56%</td></tr>
+          <tr><td>Map recentre</td><td><code>--duration-slow</code></td><td>Camera ease; pin drops with spring, no bounce more than 4%</td></tr>
+          <tr><td>Skeleton → data</td><td><code>--duration-fast</code></td><td>Cross-fade; never a layout jump</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================== 7. ICONOGRAPHY ============================== -->
+    <section class="sg-section" id="iconography">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">07 — Foundations</p>
+          <h2 class="t-h1">Iconography</h2>
+        </div>
+        <span class="tag tag--neutral">24px grid · 1.8 stroke</span>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        One open-stroke family, drawn on a 24px grid with 1.8–2px strokes and round caps. Icons carry
+        no fill except where a state needs weight (active tab, selected pin, rating star). Sizes: 16 in
+        chips, 20 in rows, 24 in navigation and headers, 34 on service tiles.
+      </p>
+      <div class="iconography" style="margin-top:var(--space-6)">
+        <div class="icono"><svg><use href="#i-home"/></svg>home</div>
+        <div class="icono"><svg><use href="#i-map"/></svg>map</div>
+        <div class="icono"><svg><use href="#i-ticket"/></svg>ticket</div>
+        <div class="icono"><svg><use href="#i-user"/></svg>profile</div>
+        <div class="icono"><svg><use href="#i-search"/></svg>search</div>
+        <div class="icono"><svg><use href="#i-mic"/></svg>voice</div>
+        <div class="icono"><svg><use href="#i-swap"/></svg>swap route</div>
+        <div class="icono"><svg><use href="#i-pin"/></svg>stop</div>
+        <div class="icono"><svg><use href="#i-bus"/></svg>danfo</div>
+        <div class="icono"><svg><use href="#i-car"/></svg>keke / car</div>
+        <div class="icono"><svg><use href="#i-clock"/></svg>eta</div>
+        <div class="icono"><svg><use href="#i-route"/></svg>route</div>
+        <div class="icono"><svg><use href="#i-wallet"/></svg>fare</div>
+        <div class="icono"><svg><use href="#i-shield"/></svg>safety</div>
+        <div class="icono"><svg><use href="#i-bell"/></svg>alerts</div>
+        <div class="icono"><svg><use href="#i-star"/></svg>rating</div>
+        <div class="icono"><svg><use href="#i-calendar"/></svg>schedule</div>
+        <div class="icono"><svg><use href="#i-seat"/></svg>seats</div>
+        <div class="icono"><svg><use href="#i-sliders"/></svg>filter</div>
+        <div class="icono"><svg><use href="#i-crosshair"/></svg>recentre</div>
+        <div class="icono"><svg><use href="#i-phone"/></svg>call</div>
+        <div class="icono"><svg><use href="#i-check"/></svg>confirmed</div>
+        <div class="icono"><svg><use href="#i-speed"/></svg>speed</div>
+        <div class="icono"><svg><use href="#i-arrow"/></svg>forward</div>
+      </div>
+    </section>
+
+    <!-- ============================== 8. BUTTONS ============================== -->
+    <section class="sg-section" id="buttons">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">08 — Components</p>
+          <h2 class="t-h1">Buttons</h2>
+        </div>
+        <span class="tag tag--neutral">5 variants · 4 sizes</span>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Pills, always. One primary per screen; if you need two, the second is <code>--secondary</code>
+        (ink) or <code>--outline</code>. Minimum height 48px on mobile — a thumb at a bus stop is not
+        precise.
+      </p>
+
+      <div class="sg-specimen stack-6" style="margin-top:var(--space-6)">
+        <div>
+          <p class="t-eyebrow">Variants</p>
+          <div class="sg-demo" style="margin-top:var(--space-3)">
+            <button class="btn btn--primary">Search routes</button>
+            <button class="btn btn--secondary">Book seat</button>
+            <button class="btn btn--outline">Learn more</button>
+            <button class="btn btn--ghost">Not now</button>
+            <button class="btn btn--danger">Cancel trip</button>
+            <button class="btn btn--primary" disabled>Sold out</button>
+          </div>
+        </div>
+        <div>
+          <p class="t-eyebrow">Sizes</p>
+          <div class="sg-demo" style="margin-top:var(--space-3)">
+            <button class="btn btn--primary btn--sm">Small · 36</button>
+            <button class="btn btn--primary">Default · 48</button>
+            <button class="btn btn--primary btn--lg">Large · 56</button>
+            <button class="btn btn--secondary btn--icon" aria-label="Swap"><svg width="18" height="18"><use href="#i-swap"/></svg></button>
+            <button class="btn btn--primary" aria-label="Locate"><svg width="18" height="18"><use href="#i-crosshair"/></svg>Use my location</button>
+          </div>
+        </div>
+        <div>
+          <p class="t-eyebrow">In context</p>
+          <div class="row" style="margin-top:var(--space-3);gap:var(--space-6);align-items:flex-start;flex-wrap:wrap">
+            <div style="width:300px">
+              <div class="sheet" style="border-radius:var(--radius-lg);box-shadow:var(--shadow-md);padding:var(--space-4)">
+                <div class="row-between" style="margin-bottom:var(--space-3)">
+                  <div><p class="t-h4">Oshodi → Ikeja</p><p class="t-caption">Danfo · 4 seats left</p></div>
+                  <p class="t-num" style="font-size:var(--text-20);font-weight:700">₦650</p>
+                </div>
+                <button class="btn btn--primary btn--block">Book seat</button>
+                <button class="btn btn--ghost btn--block" style="margin-top:var(--space-2)">See other times</button>
+              </div>
+            </div>
+            <div style="max-width:34ch">
+              <p class="t-body-sm"><strong>Pressed feedback</strong> is a 1px drop plus 0.5% scale — tactile, never a colour-only change. Hover exists for pointer devices only; touch devices get the pressed state on tap.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <table class="sg-table" style="margin-top:var(--space-5);background:var(--bg-surface);border-radius:var(--radius-md)">
+        <thead><tr><th>Variant</th><th>Fill / text</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td><code>.btn--primary</code></td><td>Yellow 400 / Ink 900</td><td>The single most valuable action on screen</td></tr>
+          <tr><td><code>.btn--secondary</code></td><td>Ink 900 / White</td><td>Commitments that are not the main CTA (book, pay)</td></tr>
+          <tr><td><code>.btn--outline</code></td><td>Transparent / Ink 900, 2.5px border</td><td>Secondary exploration: “learn more”, “view route”</td></tr>
+          <tr><td><code>.btn--ghost</code></td><td>Transparent</td><td>Dismissals inside sheets and cards</td></tr>
+          <tr><td><code>.btn--danger</code></td><td>Red 500 / White</td><td>Destructive only — cancel, remove payment method</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================== 9. INPUTS ============================== -->
+    <section class="sg-section" id="inputs">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">09 — Components</p>
+          <h2 class="t-h1">Inputs &amp; route picker</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Inputs are 48px tall, 16px text (prevents iOS zoom) and outlined at 3:1 so they stay findable in
+        glare. The <strong>route block</strong> is the workhorse pattern for pick-up → drop-off, used
+        on home, taxi and booking screens.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6);grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <div class="sg-specimen">
+          <p class="t-eyebrow">Text field</p>
+          <div class="stack-4" style="margin-top:var(--space-3)">
+            <div class="field">
+              <label class="field__label" for="ex1">Full name</label>
+              <input class="input" id="ex1" placeholder="Olalekan Adeyemi">
+              <span class="field__hint">As it appears on your ID</span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="ex2">Phone number</label>
+              <input class="input input--invalid" id="ex2" value="0803" aria-invalid="true">
+              <span class="field__error">Enter the full 11-digit number</span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="ex3">Disabled</label>
+              <input class="input" id="ex3" value="Not editable" disabled>
+            </div>
+          </div>
+        </div>
+
+        <div class="sg-specimen">
+          <p class="t-eyebrow">Search bar — home hero</p>
+          <div class="stack-3" style="margin-top:var(--space-3)">
+            <div class="searchbar">
+              <svg width="18" height="18" style="flex:0 0 auto"><use href="#i-search"/></svg>
+              <input class="searchbar__input" placeholder="Search your bus routes">
+              <button class="searchbar__action" aria-label="Voice search"><svg width="16" height="16"><use href="#i-mic"/></svg></button>
+            </div>
+            <div class="row" style="gap:var(--space-2)">
+              <button class="chip"><svg class="chip__icon"><use href="#i-home"/></svg>Home</button>
+              <button class="chip"><svg class="chip__icon"><use href="#i-briefcase"/></svg>Office</button>
+              <button class="btn btn--secondary btn--icon" style="margin-left:auto" aria-label="Swap"><svg width="16" height="16"><use href="#i-swap"/></svg></button>
+            </div>
+            <p class="t-caption">Placeholder contrast on yellow is 5.14:1 — the reason the input sits <em>inside</em> the yellow pill rather than beside it.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">Route block</h3>
+      <div class="grid-auto" style="margin-top:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="route">
+          <div class="route__rail">
+            <span class="route__dot route__dot--pickup"></span>
+            <span class="route__line"></span>
+            <span class="route__dot route__dot--drop"></span>
+          </div>
+          <div class="route__fields">
+            <div class="route__field">
+              <span class="field__label">Pick up</span>
+              <span class="route__value">Ikeja Under Bridge</span>
+              <span class="t-caption">Oba Akran Way · 2 min walk</span>
+            </div>
+            <div class="route__field">
+              <span class="field__label">Drop off</span>
+              <span class="route__value" style="color:var(--text-tertiary);font-weight:500">Enter drop-off location</span>
+            </div>
+          </div>
+          <button class="btn btn--secondary btn--icon" style="align-self:flex-end" aria-label="Add stop"><svg width="18" height="18"><use href="#i-plus"/></svg></button>
+        </div>
+        <div class="sg-card">
+          <p class="t-eyebrow">Anatomy</p>
+          <ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)">
+            <li><strong>Rail</strong> — 10px pickup dot (yellow, 3px halo) and 10px drop dot (ink), joined by a dashed line that stretches with content.</li>
+            <li><strong>Fields</strong> — caps label above value; 1px divider between.</li>
+            <li><strong>Trailing action</strong> — add-stop or swap, 44px target, aligned to the baseline of the last field.</li>
+            <li><strong>States</strong> — empty value uses tertiary grey and medium weight; filled uses ink and semibold.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 10. CHIPS & TAGS ============================== -->
+    <section class="sg-section" id="chips">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">10 — Components</p>
+          <h2 class="t-h1">Chips &amp; tags</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Chips are interactive shortcuts (Home, Office, BRT only). Tags are read-only facts (Live,
+        Delayed, ₦650). Chips are 36px tall and always carry an icon when they filter a list.
+      </p>
+
+      <div class="sg-specimen" style="margin-top:var(--space-6)">
+        <div class="grid-auto" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+          <div>
+            <p class="t-eyebrow">Chip states</p>
+            <div class="stack-3" style="margin-top:var(--space-3)">
+              <div class="row" style="flex-wrap:wrap;gap:var(--space-2)">
+                <button class="chip chip--selected"><svg class="chip__icon"><use href="#i-home"/></svg>Home</button>
+                <button class="chip chip--outline">Office</button>
+                <button class="chip chip--brand">Danfo</button>
+              </div>
+              <div class="row" style="flex-wrap:wrap;gap:var(--space-2)">
+                <button class="chip chip--outline"><svg class="chip__icon"><use href="#i-bus"/></svg>BRT</button>
+                <button class="chip chip--outline"><svg class="chip__icon"><use href="#i-car"/></svg>Keke</button>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="t-eyebrow">Status tags</p>
+            <div class="row" style="margin-top:var(--space-3);flex-wrap:wrap;gap:var(--space-2)">
+              <span class="tag tag--success"><span class="dot"></span>Live</span>
+              <span class="tag tag--warning">Delayed 6 min</span>
+              <span class="tag tag--danger">Full</span>
+              <span class="tag tag--info">BRT lane</span>
+              <span class="tag tag--neutral">Cash only</span>
+              <span class="tag tag--brand">₦650</span>
+            </div>
+          </div>
+        </div>
+        <hr class="divider" style="margin:var(--space-5) 0">
+        <p class="t-eyebrow">Live indicator</p>
+        <div class="row" style="margin-top:var(--space-3);gap:var(--space-6)">
+          <span class="live"><span class="dot"></span>Tracking live</span>
+          <span class="live" style="color:var(--text-tertiary)"><span class="dot" style="background:var(--ink-300);animation:none;box-shadow:none"></span>Last seen 4 min ago</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 11. CARDS & TILES ============================== -->
+    <section class="sg-section" id="cards">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">11 — Components</p>
+          <h2 class="t-h1">Cards &amp; tiles</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Cards are containers: 1px ink-100 edge, 20px radius, one soft shadow. Tiles are actions:
+        yellow, ink border, sticker shadow. A screen should read as “cards hold information, tiles take
+        you somewhere”.
+      </p>
+
+      <div class="sg-phones" style="margin-top:var(--space-6);overflow:visible;flex-wrap:wrap">
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">Service tiles — home</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3);width:340px">
+            <a class="tile" href="#cards">
+              <svg class="tile__icon"><use href="#i-bus"/></svg>
+              <div><span class="tile__label">Live tracking</span><p class="t-caption" style="color:rgba(11,11,10,.66)">32 danfo near you</p></div>
+            </a>
+            <a class="tile" href="#cards">
+              <svg class="tile__icon"><use href="#i-ticket"/></svg>
+              <div><span class="tile__label">Booking tour</span><p class="t-caption" style="color:rgba(11,11,10,.66)">Reserve a seat</p></div>
+            </a>
+            <a class="tile tile--ghost" href="#cards">
+              <svg class="tile__icon"><use href="#i-route"/></svg>
+              <div><span class="tile__label">Plan a route</span><p class="t-caption">Compare 3 ways</p></div>
+            </a>
+            <a class="tile tile--ghost" href="#cards">
+              <svg class="tile__icon"><use href="#i-shield"/></svg>
+              <div><span class="tile__label">Safety</span><p class="t-caption">Share your trip</p></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">Information cards</div>
+          <div class="stack-3" style="width:340px">
+            <div class="card">
+              <div class="card__body">
+                <div class="row-between">
+                  <div class="row">
+                    <span class="avatar avatar--sm">OA</span>
+                    <div><p class="t-h4">Oshodi → Ikeja</p><p class="t-caption">Danfo · departs 08:42</p></div>
+                  </div>
+                  <span class="tag tag--success">Live</span>
+                </div>
+                <hr class="divider" style="margin:var(--space-3) 0">
+                <div class="row-between">
+                  <span class="t-body-sm t-muted">Fare</span>
+                  <span class="t-num" style="font-weight:700">₦650</span>
+                </div>
+              </div>
+            </div>
+            <div class="card card--ink">
+              <div class="card__body">
+                <p class="t-eyebrow" style="color:var(--ink-300)">Trip in progress</p>
+                <p class="t-h3" style="margin-top:var(--space-1)">Arriving in 6 min</p>
+                <div class="row-between" style="margin-top:var(--space-3)">
+                  <span class="t-body-sm" style="color:var(--ink-300)">Ikeja Along</span>
+                  <button class="btn btn--primary btn--sm">Track</button>
+                </div>
+              </div>
+            </div>
+            <div class="card card--flat">
+              <div class="card__body">
+                <div class="grid-auto" style="gap:var(--space-4);grid-template-columns:repeat(3,1fr)">
+                  <div class="stat"><span class="stat__value">₦650</span><span class="stat__label">Fare</span></div>
+                  <div class="stat"><span class="stat__value">12<small style="font-size:var(--text-12)">m</small></span><span class="stat__label">Journey</span></div>
+                  <div class="stat"><span class="stat__value">4</span><span class="stat__label">Seats left</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 12. LISTS & FARES ============================== -->
+    <section class="sg-section" id="lists">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">12 — Components</p>
+          <h2 class="t-h1">Lists, rows &amp; fare tiers</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Rows are 64px minimum with a 40px media plate, a two-line label and an optional trailing value.
+        The fare tier row (Standard / Economy / Premium) is a single-select radio in disguise — the whole
+        row is the target, and the selected state is both a border and a tint so it reads without colour.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6);grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <div class="sg-specimen">
+          <p class="t-eyebrow">Nearby stops</p>
+          <div class="list" style="margin-top:var(--space-2)">
+            <button class="list__row">
+              <span class="list__media">A1</span>
+              <span class="grow"><span class="list__title" style="display:block">Ikeja Under Bridge</span><span class="list__meta">Oba Akran Way · 2 min walk</span></span>
+              <span class="list__trail">4 min</span>
+              <svg width="16" height="16" style="color:var(--icon-muted)"><use href="#i-chev"/></svg>
+            </button>
+            <button class="list__row">
+              <span class="list__media" style="background:var(--ink-900);color:var(--yellow-400)">B2</span>
+              <span class="grow"><span class="list__title" style="display:block">Computer Village</span><span class="list__meta">Otigba St · 6 min walk</span></span>
+              <span class="list__trail">9 min</span>
+              <svg width="16" height="16" style="color:var(--icon-muted)"><use href="#i-chev"/></svg>
+            </button>
+            <button class="list__row">
+              <span class="list__media">C3</span>
+              <span class="grow"><span class="list__title" style="display:block">Allen Avenue</span><span class="list__meta">Allen Rd · 8 min walk</span></span>
+              <span class="list__trail">12 min</span>
+              <svg width="16" height="16" style="color:var(--icon-muted)"><use href="#i-chev"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="sg-specimen">
+          <p class="t-eyebrow">Fare tiers — single select</p>
+          <div class="stack-3" style="margin-top:var(--space-3)">
+            <div class="fare fare--selected">
+              <div class="row">
+                <span class="dot" style="background:var(--ink-900)"></span>
+                <div><p class="fare__name">Danfo · Standard</p><p class="t-caption">Shared, 14 seats</p></div>
+              </div>
+              <span class="fare__price">₦650</span>
+            </div>
+            <div class="fare">
+              <div class="row">
+                <span class="dot" style="background:var(--border-default)"></span>
+                <div><p class="fare__name">BRT · Express</p><p class="t-caption">Lane priority, AC</p></div>
+              </div>
+              <span class="fare__price">₦1,200</span>
+            </div>
+            <div class="fare">
+              <div class="row">
+                <span class="dot" style="background:var(--border-default)"></span>
+                <div><p class="fare__name">Keke · Charter</p><p class="t-caption">Whole keke, 3 seats</p></div>
+              </div>
+              <span class="fare__price">₦2,400</span>
+            </div>
+          </div>
+          <p class="t-caption" style="margin-top:var(--space-3)">Prices always bold display numerals, right-aligned, tabular.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 13. MAP ============================== -->
+    <section class="sg-section" id="map">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">13 — Components</p>
+          <h2 class="t-h1">Map language</h2>
+        </div>
+        <span class="tag tag--neutral">Low chroma so markers win</span>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        The map is a stage, not a painting. Base land, roads, parks and water are desaturated to near-grey
+        so the only saturated things on screen are the yellow brand pin, live vehicles and the user dot.
+        Labels use uppercase 10px at 60% opacity.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6);grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <div class="map" style="height:320px;border:1px solid var(--border-subtle)">
+          <span class="map__legend">Ikeja · live</span>
+          <div class="map__pin"><svg width="16" height="16"><use href="#i-bus"/></svg></div>
+          <span class="map__car" style="left:22%;top:62%"><svg width="14" height="14"><use href="#i-car"/></svg></span>
+          <span class="map__car map__car--live" style="left:66%;top:28%"><svg width="14" height="14"><use href="#i-car"/></svg></span>
+          <span class="map__car" style="left:78%;top:70%"><svg width="14" height="14"><use href="#i-car"/></svg></span>
+          <span class="map__car" style="left:40%;top:22%;background:var(--blue-500);border-color:var(--blue-700);color:#fff"><svg width="12" height="12"><use href="#i-user"/></svg></span>
+          <button class="map__control" aria-label="Recentre"><svg width="18" height="18"><use href="#i-crosshair"/></svg></button>
+        </div>
+        <div class="sg-card">
+          <p class="t-eyebrow">Marker rules</p>
+          <table class="sg-table" style="margin-top:var(--space-2)">
+            <tbody>
+              <tr><td>Stop pin</td><td>Ink teardrop 34px, yellow bus glyph, 1 pin per stop only</td></tr>
+              <tr><td>Live vehicle</td><td>28px ink circle, yellow glyph, soft shadow</td></tr>
+              <tr><td>Idle vehicle</td><td>28px white circle, ink glyph &amp; 1.5px ink border</td></tr>
+              <tr><td>You</td><td>Blue 500 dot with white ring, never animated forever</td></tr>
+              <tr><td>Density</td><td>Max 6 vehicles + 2 stops visible before clustering</td></tr>
+              <tr><td>Recentre</td><td>Always bottom-right, 44px, never hidden</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 14. NAVIGATION ============================== -->
+    <section class="sg-section" id="navigation">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">14 — Components</p>
+          <h2 class="t-h1">Navigation</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Four tabs, fixed: Home, Map, Tickets, Profile. The active tab is ink plus a 18×3px yellow
+        underline — colour alone never carries the state. Every deeper screen gets a back chevron in a
+        44px target.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6);grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="sg-specimen" style="padding:0;overflow:hidden">
+          <div class="tabbar" style="box-shadow:none">
+            <button class="tabbar__item tabbar__item--active"><svg><use href="#i-home"/></svg>Home</button>
+            <button class="tabbar__item"><svg><use href="#i-map"/></svg>Map</button>
+            <button class="tabbar__item"><svg><use href="#i-ticket"/></svg>Tickets</button>
+            <button class="tabbar__item"><svg><use href="#i-user"/></svg>Profile</button>
+          </div>
+        </div>
+        <div class="sg-specimen">
+          <p class="t-eyebrow">Header pattern</p>
+          <div class="row-between" style="margin-top:var(--space-3)">
+            <div class="row">
+              <span class="avatar">OA</span>
+              <div>
+                <p class="t-caption" style="margin-bottom:-2px">Hello,</p>
+                <p class="t-h4">Olalekan</p>
+              </div>
+            </div>
+            <button class="chip chip--outline"><svg class="chip__icon"><use href="#i-pin"/></svg>Ikorodu<svg class="chip__icon" style="width:12px;height:12px"><use href="#i-chev"/></svg></button>
+          </div>
+          <hr class="divider" style="margin:var(--space-4) 0">
+          <ul class="t-body-sm t-muted stack-2">
+            <li>Greeting is first name only, never the full name.</li>
+            <li>Location chip is the current city/area and opens the location sheet.</li>
+            <li>Header never scrolls away — it stays as a 64px sticky band.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 15. FEEDBACK ============================== -->
+    <section class="sg-section" id="feedback">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">15 — Components</p>
+          <h2 class="t-h1">Feedback &amp; states</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Four states to design for every screen, not just the happy one: loading, empty, error and
+        offline. In Lagos the last one is the default assumption in a basement, on a bridge or in rain.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6);grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <div class="sg-specimen">
+          <p class="t-eyebrow">Alerts</p>
+          <div class="stack-3" style="margin-top:var(--space-3)">
+            <div class="alert alert--success"><div><span class="alert__title">Seat confirmed.</span> Ticket is saved offline and ready to show.</div></div>
+            <div class="alert alert--warning"><div><span class="alert__title">Route delayed 6 min.</span> Traffic at Ojota bridge.</div></div>
+            <div class="alert alert--danger"><div><span class="alert__title">Payment failed.</span> Your card was declined — try another method.</div></div>
+            <div class="alert alert--info"><div><span class="alert__title">Now on BRT lane.</span> Faster by 8 minutes.</div></div>
+          </div>
+        </div>
+        <div class="sg-specimen">
+          <p class="t-eyebrow">Loading &amp; skeletons</p>
+          <div class="stack-3" style="margin-top:var(--space-3)">
+            <div class="card card--flat" style="padding:var(--space-4)">
+              <div class="row"><div class="skeleton" style="width:40px;height:40px;border-radius:50%"></div>
+                <div class="grow stack-2"><div class="skeleton" style="height:12px;width:60%"></div><div class="skeleton" style="height:10px;width:40%"></div></div>
+              </div>
+              <div class="skeleton" style="height:12px;width:100%;margin-top:var(--space-3)"></div>
+              <div class="skeleton" style="height:12px;width:80%;margin-top:var(--space-2)"></div>
+            </div>
+            <div class="row"><span class="spinner"></span><span class="t-body-sm t-muted">Finding danfo near you…</span></div>
+          </div>
+        </div>
+        <div class="sg-specimen">
+          <p class="t-eyebrow">Empty vs error</p>
+          <div class="stack-3" style="margin-top:var(--space-3)">
+            <div class="card card--flat" style="text-align:center;padding:var(--space-5) var(--space-4)">
+              <svg width="30" height="30" style="margin:0 auto;color:var(--icon-muted)"><use href="#i-bus"/></svg>
+              <p class="t-h4" style="margin-top:var(--space-3)">No tickets yet</p>
+              <p class="t-caption" style="margin-top:var(--space-1)">Book a seat and your ticket will appear here — available offline.</p>
+              <button class="btn btn--primary btn--sm" style="margin-top:var(--space-4)">Find a route</button>
+            </div>
+            <div class="card card--flat" style="text-align:center;padding:var(--space-5) var(--space-4);background:var(--paper-300)">
+              <p class="t-h4">You're offline</p>
+              <p class="t-caption" style="margin-top:var(--space-1)">Showing saved routes from 08:12 today.</p>
+              <button class="btn btn--outline btn--sm" style="margin-top:var(--space-4)">Retry</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-sticky-note" style="margin-top:var(--space-5)">
+        <strong>Rule of truthful states.</strong> A cached screen must say when it was cached. Never show a
+        live pulse on stale data — the <code>.live</code> indicator is only permitted when the socket is
+        connected.
+      </div>
+    </section>
+
+    <!-- ============================== 16. SCREEN LIBRARY ============================== -->
+    <section class="sg-section" id="screens">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">16 — Product</p>
+          <h2 class="t-h1">Screen library</h2>
+        </div>
+        <span class="tag tag--neutral">10 screens · 390×844</span>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Every screen we explored, rebuilt from tokens only. Scroll horizontally. These are the canonical
+        references: if an implementation disagrees with this row, the implementation is wrong.
+      </p>
+
+      <div class="sg-card" style="margin-top:var(--space-5);margin-bottom:var(--space-6)">
+        <p class="t-eyebrow">Consolidation map — how the four references became ten screens</p>
+        <table class="sg-table" style="margin-top:var(--space-2)">
+          <thead><tr><th>Reference</th><th>Contributed</th><th>Resolved into</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Oja Danfo</strong> hero — splash + home with route search, Home/Office chips, service tiles, nearby-stops map</td>
+              <td>Home architecture, search-in-yellow pattern, chip row with voice &amp; swap, sticker service tiles</td>
+              <td>01 Splash · 03 Home</td>
+            </tr>
+            <tr>
+              <td><strong>Swayam “Find a Ride”</strong> — map with cars, "Where you want to go" sheet, pick-up / drop-off, black + button</td>
+              <td>Route block anatomy, bottom-sheet decision pattern, floating card over map</td>
+              <td>04 Live tracking · 05 Route detail</td>
+            </tr>
+            <tr>
+              <td><strong>Fluxi</strong> case study — onboarding, splash, fare tiers (Standard / Economy / Premium) + Continue</td>
+              <td>Onboarding structure, single-select fare row, brand-field splash, confirmation badge</td>
+              <td>02 Onboarding · 06 Choose fare · 10 Confirmation</td>
+            </tr>
+            <tr>
+              <td><strong>App Store taxi board</strong> — find a ride, vehicle detail with range/speed/seats, nearby drivers, trip dates + payment details</td>
+              <td>Driver/vehicle card and plate, spec stats, itemised payment summary, success state</td>
+              <td>07 Payment · 08 Ticket · 09 Profile</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="t-caption" style="margin-top:var(--space-3)">Conflicts were resolved in favour of one rule per pattern: one primary button per screen, one yellow surface, fares always tabular, and every reference's decorative flourish replaced with a token.</p>
+      </div>
+
+      <div class="sg-phones">
+
+        <!-- 01 SPLASH -------------------------------------------------------- -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">01 · Splash</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="statusbar"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+              <div class="splash">
+                <svg class="skyline" viewBox="0 0 390 220" preserveAspectRatio="none" fill="none" stroke="#0B0B0A" stroke-width="1.2">
+                  <path d="M0 220V150h26v70M34 220V128h18v92M60 220V96h30v124M96 220v-58h14v58M118 220V132h40v88M166 220v-92l16-22 16 22v92M206 220V120h34v100M248 220v-84h20v84M276 220v-40h26v40M310 220V104h22v116M340 220v-70h16v70M364 220V140h26v80"/>
+                  <path d="M126 96l32-26 32 26M282 104l14-18 14 18"/>
+                  <circle cx="296" cy="150" r="9"/><path d="M296 141v9l5 4"/>
+                </svg>
+                <span class="splash__mark"><svg width="46" height="46"><use href="#i-bus"/></svg></span>
+                <div style="text-align:center">
+                  <p class="splash__word">Eko <span style="color:#7A6200">Way</span></p>
+                  <p class="t-caption" style="color:rgba(11,11,10,.62);margin-top:4px">Know your way before you move</p>
+                </div>
+                <p class="splash__foot">Lagos · Danfo · BRT · Keke</p>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">Brand field, mark only, no spinner. Hard max 1.2s or skip to home on cache hit.</p>
+        </div>
+
+        <!-- 02 ONBOARDING ---------------------------------------------------- -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">02 · Onboarding</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="statusbar"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+              <div class="onboard">
+                <div class="onboard__art">
+                  <svg width="200" height="150" viewBox="0 0 200 150" fill="none" style="position:relative;z-index:1">
+                    <rect x="30" y="58" width="140" height="52" rx="10" fill="#FFD100" stroke="#0B0B0A" stroke-width="3"/>
+                    <rect x="42" y="68" width="46" height="24" rx="4" fill="#0B0B0A" opacity=".85"/>
+                    <rect x="96" y="68" width="30" height="24" rx="4" fill="#0B0B0A" opacity=".5"/>
+                    <rect x="132" y="68" width="26" height="24" rx="4" fill="#0B0B0A" opacity=".25"/>
+                    <circle cx="58" cy="114" r="11" fill="#0B0B0A"/><circle cx="58" cy="114" r="4" fill="#F6F6F2"/>
+                    <circle cx="146" cy="114" r="11" fill="#0B0B0A"/><circle cx="146" cy="114" r="4" fill="#F6F6F2"/>
+                    <path d="M30 40h60M30 30h34" stroke="#0B0B0A" stroke-width="3" stroke-linecap="round" opacity=".25"/>
+                    <path d="M150 34c14 0 24 8 24 18" stroke="#0B0B0A" stroke-width="3" stroke-linecap="round" stroke-dasharray="4 6" opacity=".4"/>
+                  </svg>
+                </div>
+                <div class="onboard__copy">
+                  <h3 class="t-h2">Find your route<br>before you leave.</h3>
+                  <p class="t-body-sm t-muted" style="margin-top:var(--space-2)">Live danfo, BRT and keke around you — with fares and departure times before you get to the stop.</p>
+                  <div class="row-between" style="margin-top:var(--space-5)">
+                    <div class="dots"><i class="is-on"></i><i></i><i></i></div>
+                    <button class="btn btn--ghost btn--sm">Skip</button>
+                  </div>
+                  <button class="btn btn--primary btn--block" style="margin-top:var(--space-3)">Continue</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">3 panels max, one idea each. Skip always visible — never force a tour.</p>
+        </div>
+
+        <!-- 03 HOME ---------------------------------------------------------- -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">03 · Home</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="home-hero">
+                <div class="statusbar"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+                <div class="apphead" style="padding-top:0">
+                  <div class="row">
+                    <span class="avatar">OA</span>
+                    <div>
+                      <p class="t-caption" style="color:rgba(11,11,10,.6);margin-bottom:-2px">Hello,</p>
+                      <p class="t-h4">Olalekan</p>
+                    </div>
+                  </div>
+                  <button class="chip"><svg class="chip__icon"><use href="#i-pin"/></svg>Ikorodu<svg class="chip__icon" style="width:11px;height:11px"><use href="#i-chev"/></svg></button>
+                </div>
+                <div style="padding:0 var(--space-4)">
+                  <p class="t-eyebrow" style="color:rgba(11,11,10,.6)">Search</p>
+                  <div class="searchbar" style="margin-top:var(--space-2)">
+                    <input class="searchbar__input" placeholder="Search your bus routes">
+                    <button class="searchbar__action" aria-label="Voice"><svg width="16" height="16"><use href="#i-mic"/></svg></button>
+                  </div>
+                  <div class="row" style="gap:var(--space-2);margin-top:var(--space-3)">
+                    <button class="chip"><svg class="chip__icon"><use href="#i-home"/></svg>Home</button>
+                    <button class="chip"><svg class="chip__icon"><use href="#i-pin"/></svg>Office</button>
+                    <button class="btn btn--secondary btn--icon" style="margin-left:auto;width:36px;height:36px" aria-label="Swap"><svg width="15" height="15"><use href="#i-swap"/></svg></button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="screen__body" style="padding:var(--space-4)">
+                <p class="t-h4" style="margin-bottom:var(--space-3)">Explore services</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)">
+                  <a class="tile" href="#screens" style="min-height:96px">
+                    <svg class="tile__icon"><use href="#i-bus"/></svg>
+                    <div><span class="tile__label">Live tracking</span><span class="t-caption" style="display:block;color:rgba(11,11,10,.62)">32 nearby</span></div>
+                  </a>
+                  <a class="tile" href="#screens" style="min-height:96px">
+                    <svg class="tile__icon"><use href="#i-ticket"/></svg>
+                    <div><span class="tile__label">Booking tour</span><span class="t-caption" style="display:block;color:rgba(11,11,10,.62)">Reserve seat</span></div>
+                  </a>
+                </div>
+                <div class="row-between" style="margin-top:var(--space-4)">
+                  <p class="t-h4">Nearby stops</p>
+                  <span class="t-caption t-brand" style="font-weight:600">See all</span>
+                </div>
+                <div class="map" style="height:150px;margin-top:var(--space-2)">
+                  <div class="map__pin" style="left:38%;top:48%"><svg width="14" height="14"><use href="#i-bus"/></svg></div>
+                  <span class="map__car map__car--live" style="left:66%;top:34%"><svg width="11" height="11"><use href="#i-car"/></svg></span>
+                  <span class="map__car" style="left:24%;top:70%"><svg width="11" height="11"><use href="#i-car"/></svg></span>
+                  <button class="map__control" style="width:34px;height:34px" aria-label="Recentre"><svg width="15" height="15"><use href="#i-crosshair"/></svg></button>
+                </div>
+                <div class="row" style="gap:var(--space-2);margin-top:var(--space-3)">
+                  <span class="tag tag--success"><span class="dot"></span>Live</span>
+                  <span class="t-caption">Ikeja Under Bridge · 4 min</span>
+                </div>
+              </div>
+
+              <div class="tabbar">
+                <button class="tabbar__item tabbar__item--active"><svg><use href="#i-home"/></svg>Home</button>
+                <button class="tabbar__item"><svg><use href="#i-map"/></svg>Map</button>
+                <button class="tabbar__item"><svg><use href="#i-ticket"/></svg>Tickets</button>
+                <button class="tabbar__item"><svg><use href="#i-user"/></svg>Profile</button>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">Yellow hero holds greeting + search only. Everything below is paper.</p>
+        </div>
+
+        <!-- 04 LIVE MAP ------------------------------------------------------ -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">04 · Live tracking</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="map" style="position:absolute;inset:0;border-radius:0">
+                <div class="map__pin" style="left:52%;top:44%"><svg width="16" height="16"><use href="#i-bus"/></svg></div>
+                <span class="map__car map__car--live" style="left:32%;top:34%"><svg width="13" height="13"><use href="#i-car"/></svg></span>
+                <span class="map__car map__car--live" style="left:70%;top:56%"><svg width="13" height="13"><use href="#i-car"/></svg></span>
+                <span class="map__car" style="left:44%;top:68%"><svg width="13" height="13"><use href="#i-car"/></svg></span>
+                <span class="map__car" style="left:26%;top:52%;background:var(--blue-500);border-color:var(--blue-700);color:#fff"><svg width="11" height="11"><use href="#i-user"/></svg></span>
+              </div>
+              <div class="statusbar" style="position:relative;z-index:2"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+              <div class="overmap" style="top:56px">
+                <div class="overmap__card">
+                  <div class="row" style="gap:var(--space-2)">
+                    <span class="apphead__back" style="rotate:0;width:32px;height:32px"><svg width="14" height="14"><use href="#i-chev"/></svg></span>
+                    <div class="grow">
+                      <p class="t-caption" style="margin-bottom:-1px">Tracking</p>
+                      <p class="t-h4" style="font-size:var(--text-14)">Oshodi → Ikeja</p>
+                    </div>
+                    <span class="live"><span class="dot"></span>Live</span>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:auto;position:relative;z-index:2">
+                <div class="sheet" style="box-shadow:var(--shadow-sheet)">
+                  <div class="sheet__handle"></div>
+                  <div class="row-between">
+                    <div>
+                      <p class="t-caption">Arriving in</p>
+                      <p class="t-num" style="font-size:var(--text-30);font-weight:700;line-height:1.05">6 min</p>
+                    </div>
+                    <div style="text-align:right">
+                      <p class="t-caption">Fare</p>
+                      <p class="t-num" style="font-size:var(--text-20);font-weight:700">₦650</p>
+                    </div>
+                  </div>
+                  <div class="driver" style="margin-top:var(--space-3)">
+                    <span class="avatar">AK</span>
+                    <div class="grow">
+                      <p class="driver__name">Akin Balogun</p>
+                      <span class="driver__plate">KJA 421 XA</span>
+                    </div>
+                    <button class="btn btn--secondary btn--icon" aria-label="Call"><svg width="16" height="16"><use href="#i-phone"/></svg></button>
+                    <button class="btn btn--primary btn--icon" aria-label="Share"><svg width="16" height="16"><use href="#i-shield"/></svg></button>
+                  </div>
+                  <div class="row" style="gap:var(--space-2);margin-top:var(--space-3)">
+                    <span class="tag tag--info">Toyota Hiace</span>
+                    <span class="tag tag--neutral">4 seats left</span>
+                    <span class="tag tag--neutral">Cash</span>
+                  </div>
+                  <button class="btn btn--primary btn--block" style="margin-top:var(--space-4)">Book this seat</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">Map full-bleed, search card floating, bottom sheet always holds the decision.</p>
+        </div>
+
+        <!-- 05 ROUTE DETAIL -------------------------------------------------- -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">05 · Route detail</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="statusbar"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+              <div class="apphead">
+                <span class="apphead__back"><svg width="16" height="16"><use href="#i-chev"/></svg></span>
+                <span class="apphead__title">Oshodi → Ikeja</span>
+                <button class="btn btn--ghost btn--icon" aria-label="More"><svg width="16" height="16"><use href="#i-sliders"/></svg></button>
+              </div>
+              <div class="screen__body screen__gutter">
+                <div class="route" style="margin-bottom:var(--space-4)">
+                  <div class="route__rail">
+                    <span class="route__dot route__dot--pickup"></span>
+                    <span class="route__line"></span>
+                    <span class="route__dot route__dot--drop"></span>
+                  </div>
+                  <div class="route__fields">
+                    <div class="route__field">
+                      <span class="field__label">From</span>
+                      <span class="route__value">Oshodi Terminal</span>
+                    </div>
+                    <div class="route__field">
+                      <span class="field__label">To</span>
+                      <span class="route__value">Ikeja Under Bridge</span>
+                    </div>
+                  </div>
+                  <button class="btn btn--secondary btn--icon" style="align-self:flex-end" aria-label="Swap"><svg width="16" height="16"><use href="#i-swap"/></svg></button>
+                </div>
+
+                <div class="row" style="gap:var(--space-2);margin-bottom:var(--space-4)">
+                  <span class="chip chip--selected">Danfo</span>
+                  <span class="chip chip--outline">BRT</span>
+                  <span class="chip chip--outline">Keke</span>
+                </div>
+
+                <div class="card">
+                  <div class="card__body">
+                    <div class="row-between" style="margin-bottom:var(--space-4)">
+                      <div>
+                        <p class="t-caption">Next departure</p>
+                        <p class="t-num" style="font-size:var(--text-20);font-weight:700">08:42</p>
+                      </div>
+                      <div style="text-align:right">
+                        <p class="t-caption">Duration · Fare</p>
+                        <p class="t-body-sm" style="font-weight:600">12 min · ₦650</p>
+                      </div>
+                    </div>
+                    <div class="timeline">
+                      <div class="tl-item">
+                        <div class="tl-rail"><span class="tl-dot tl-dot--start"></span></div>
+                        <div><p class="tl-name">Oshodi Terminal</p><p class="tl-meta">Board here · stand 3</p></div>
+                        <span class="tl-time">08:12</span>
+                      </div>
+                      <div class="tl-item">
+                        <div class="tl-rail"><span class="tl-dot tl-dot--here"></span></div>
+                        <div><p class="tl-name">Ojota Bridge</p><p class="tl-meta">You are here · 2 stops left</p></div>
+                        <span class="tl-time">08:18</span>
+                      </div>
+                      <div class="tl-item">
+                        <div class="tl-rail"><span class="tl-dot"></span></div>
+                        <div><p class="tl-name">Ikeja Along</p><p class="tl-meta">Change for BRT</p></div>
+                        <span class="tl-time">08:34</span>
+                      </div>
+                      <div class="tl-item">
+                        <div class="tl-rail"><span class="tl-dot tl-dot--start"></span></div>
+                        <div><p class="tl-name">Ikeja Under Bridge</p><p class="tl-meta">Arrive</p></div>
+                        <span class="tl-time">08:42</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="alert alert--warning" style="margin-top:var(--space-3)">
+                  <div><span class="alert__title">Heavy traffic at Ojota.</span> Allow an extra 6 min.</div>
+                </div>
+              </div>
+              <div style="padding:var(--space-3) var(--space-4) var(--space-4);border-top:1px solid var(--border-subtle);background:var(--bg-surface)">
+                <button class="btn btn--primary btn--block">Select seats · ₦650</button>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">Stops as a timeline: dot, name, meta, time. Boarding stop is filled ink.</p>
+        </div>
+
+        <!-- 06 BOOKING ------------------------------------------------------- -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">06 · Choose fare</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="statusbar"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+              <div class="apphead">
+                <span class="apphead__back"><svg width="16" height="16"><use href="#i-chev"/></svg></span>
+                <span class="apphead__title">Booking</span>
+                <span style="width:40px"></span>
+              </div>
+              <div class="screen__body screen__gutter">
+                <div class="map" style="height:170px">
+                  <div class="map__pin"><svg width="16" height="16"><use href="#i-bus"/></svg></div>
+                  <span class="map__car map__car--live" style="left:70%;top:36%"><svg width="12" height="12"><use href="#i-car"/></svg></span>
+                  <span class="map__legend">3 drivers near</span>
+                  <button class="map__control" style="width:34px;height:34px" aria-label="Recentre"><svg width="15" height="15"><use href="#i-crosshair"/></svg></button>
+                </div>
+
+                <p class="t-h4" style="margin-top:var(--space-4)">Choose your ride</p>
+                <p class="t-caption">Prices are fixed for this route. No haggling.</p>
+                <div class="stack-2" style="margin-top:var(--space-3)">
+                  <div class="fare fare--selected">
+                    <div class="row"><span class="dot" style="background:var(--ink-900)"></span><div><p class="fare__name">Danfo · Standard</p><p class="t-caption">14 seats · shared</p></div></div>
+                    <span class="fare__price">₦650</span>
+                  </div>
+                  <div class="fare">
+                    <div class="row"><span class="dot" style="background:var(--border-default)"></span><div><p class="fare__name">BRT · Express</p><p class="t-caption">Lane priority · AC</p></div></div>
+                    <span class="fare__price">₦1,200</span>
+                  </div>
+                  <div class="fare">
+                    <div class="row"><span class="dot" style="background:var(--border-default)"></span><div><p class="fare__name">Keke · Charter</p><p class="t-caption">Whole keke · 3 seats</p></div></div>
+                    <span class="fare__price">₦2,400</span>
+                  </div>
+                </div>
+
+                <div class="card card--flat" style="margin-top:var(--space-4);background:var(--paper-300)">
+                  <div class="card__body">
+                    <p class="t-eyebrow">Seat</p>
+                    <div class="row" style="margin-top:var(--space-2);gap:var(--space-2);flex-wrap:wrap">
+                      <button class="chip chip--outline" style="min-width:40px;justify-content:center">1</button>
+                      <button class="chip chip--selected" style="min-width:40px;justify-content:center">2</button>
+                      <button class="chip chip--outline" style="min-width:40px;justify-content:center">3</button>
+                      <button class="chip" style="min-width:40px;justify-content:center;opacity:.4;cursor:not-allowed">4</button>
+                      <button class="chip chip--outline" style="min-width:40px;justify-content:center">5</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:var(--space-3) var(--space-4) var(--space-4);border-top:1px solid var(--border-subtle);background:var(--bg-surface)">
+                <div class="row-between" style="margin-bottom:var(--space-3)">
+                  <span class="t-caption">Total</span>
+                  <span class="t-num" style="font-size:var(--text-20);font-weight:700">₦650</span>
+                </div>
+                <button class="btn btn--primary btn--block">Continue to payment</button>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">Fare first, seat second. Unavailable seats dim to 40% — never hidden.</p>
+        </div>
+
+        <!-- 07 PAYMENT ------------------------------------------------------- -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">07 · Payment</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="statusbar"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+              <div class="apphead">
+                <span class="apphead__back"><svg width="16" height="16"><use href="#i-chev"/></svg></span>
+                <span class="apphead__title">Payment</span>
+                <span style="width:40px"></span>
+              </div>
+              <div class="screen__body screen__gutter">
+                <div class="card">
+                  <div class="card__body">
+                    <p class="t-eyebrow">Trip summary</p>
+                    <div class="route-arrow" style="margin-top:var(--space-2)">Oshodi <svg width="16" height="16"><use href="#i-arrow"/></svg> Ikeja</div>
+                    <p class="t-caption" style="margin-top:var(--space-1)">Today · 08:42 · Danfo Standard · Seat 2</p>
+                    <hr class="divider" style="margin:var(--space-3) 0">
+                    <div class="summary">
+                      <div class="summary__row"><span>Base fare</span><span>₦600</span></div>
+                      <div class="summary__row"><span>Booking fee</span><span>₦50</span></div>
+                      <div class="summary__row"><span>Promo — EKO100</span><span style="color:var(--green-700)">−₦0</span></div>
+                      <div class="summary__row summary__total"><span>Total</span><span class="t-num" style="font-size:var(--text-18)">₦650</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="t-h4" style="margin-top:var(--space-5)">Pay with</p>
+                <div class="stack-2" style="margin-top:var(--space-2)">
+                  <div class="paymethod" style="border-color:var(--ink-900);box-shadow:inset 0 0 0 1px var(--ink-900)">
+                    <span class="paymethod__logo">VISA</span>
+                    <div class="grow"><p class="t-body-sm" style="font-weight:600">•••• 4821</p><p class="t-caption">O. Adeyemi</p></div>
+                    <svg width="18" height="18" style="color:var(--ink-900)"><use href="#i-check"/></svg>
+                  </div>
+                  <div class="paymethod">
+                    <span class="paymethod__logo" style="background:var(--yellow-400);color:var(--ink-900)">TRF</span>
+                    <div class="grow"><p class="t-body-sm" style="font-weight:600">Transfer</p><p class="t-caption">Pay from any bank app</p></div>
+                  </div>
+                  <div class="paymethod">
+                    <span class="paymethod__logo" style="background:var(--paper-300);color:var(--ink-900)">CASH</span>
+                    <div class="grow"><p class="t-body-sm" style="font-weight:600">Cash to conductor</p><p class="t-caption">Reserve only, pay on board</p></div>
+                  </div>
+                </div>
+                <div class="alert alert--info" style="margin-top:var(--space-4)">
+                  <div><span class="alert__title">Secure.</span> Card details never leave your device — Eko Way only stores a token.</div>
+                </div>
+              </div>
+              <div style="padding:var(--space-3) var(--space-4) var(--space-4);border-top:1px solid var(--border-subtle);background:var(--bg-surface)">
+                <button class="btn btn--primary btn--block">Pay ₦650</button>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">Costs itemised before the CTA. Cash is a first-class method in Lagos.</p>
+        </div>
+
+        <!-- 08 TICKET -------------------------------------------------------- -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">08 · Ticket</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="statusbar"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+              <div class="apphead">
+                <span class="apphead__back"><svg width="16" height="16"><use href="#i-chev"/></svg></span>
+                <span class="apphead__title">Your ticket</span>
+                <button class="btn btn--ghost btn--icon" aria-label="Share"><svg width="16" height="16"><use href="#i-shield"/></svg></button>
+              </div>
+              <div class="screen__body screen__gutter">
+                <p class="t-caption" style="margin-bottom:var(--space-3)">Show this at the stand. Works offline.</p>
+                <div class="ticket">
+                  <div class="ticket__top">
+                    <div class="row-between">
+                      <span class="tag" style="background:var(--ink-900);color:var(--yellow-400)">Valid today</span>
+                      <span class="t-mono" style="font-size:var(--text-11);color:rgba(11,11,10,.6)">#EW-8842-019</span>
+                    </div>
+                    <div class="route-arrow" style="margin-top:var(--space-4);font-size:var(--text-24)">Oshodi <svg width="22" height="22"><use href="#i-arrow"/></svg> Ikeja</div>
+                    <p class="t-body-sm" style="color:rgba(11,11,10,.66);margin-top:var(--space-1)">Danfo Standard · Seat 2 of 14</p>
+                    <div class="row" style="gap:var(--space-6);margin-top:var(--space-4)">
+                      <div><p class="t-caption" style="color:rgba(11,11,10,.55)">Depart</p><p class="t-num" style="font-weight:700">08:42</p></div>
+                      <div><p class="t-caption" style="color:rgba(11,11,10,.55)">Arrive</p><p class="t-num" style="font-weight:700">08:54</p></div>
+                      <div><p class="t-caption" style="color:rgba(11,11,10,.55)">Fare</p><p class="t-num" style="font-weight:700">₦650</p></div>
+                    </div>
+                  </div>
+                  <div class="ticket__perf"></div>
+                  <div class="ticket__bottom">
+                    <div class="qr">
+                      <svg viewBox="0 0 21 21" shape-rendering="crispEdges" fill="#0B0B0A">
+                        <path d="M0 0h7v7H0zM1 1v5h5V1zM14 0h7v7h-7zM15 1v5h5V1zM0 14h7v7H0zM1 15v5h5v-5z"/>
+                        <path d="M9 0h1v1H9zM11 0h1v2h-1zM9 2h2v1H9zM11 3h1v1h-1zM9 4h1v2H9zM11 5h2v1h-1zM9 7h2v1H9zM0 9h1v1H0zM2 9h1v2H2zM4 9h2v1H4zM7 9h1v3H7zM0 11h1v1H0zM2 12h2v1H2zM5 11h1v1H5zM9 9h1v2H9zM11 9h2v1h-2zM14 9h1v1h-1zM16 9h2v2h-2zM19 9h1v1h-1zM9 12h2v1H9zM12 11h1v2h-1zM14 11h1v1h-1zM17 12h2v1h-2zM20 12h1v2h-1zM9 14h1v1H9zM11 14h2v1h-2zM14 14h1v2h-1zM16 14h1v1h-1zM18 14h1v1h-1zM20 15h1v1h-1zM9 16h2v1H9zM12 16h1v2h-1zM16 16h2v1h-2zM19 17h1v1h-1zM9 18h1v1H9zM11 18h1v2h-1zM14 18h2v1h-2zM17 18h1v1h-1zM19 19h1v1h-1zM9 20h2v1H9zM13 20h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1z"/>
+                      </svg>
+                    </div>
+                    <div class="grow">
+                      <p class="t-caption" style="color:rgba(11,11,10,.6)">Conductor scans this</p>
+                      <p class="t-body-sm" style="font-weight:600;margin-top:2px">Akin Balogun · KJA 421 XA</p>
+                      <button class="btn btn--secondary btn--sm" style="margin-top:var(--space-2)">Call driver</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="gap:var(--space-2);margin-top:var(--space-3);justify-content:center">
+                  <span class="tag tag--success"><span class="dot"></span>Saved offline</span>
+                  <span class="tag tag--neutral">Refundable 30 min before</span>
+                </div>
+                <button class="btn btn--ghost btn--block" style="margin-top:var(--space-4)">Cancel booking</button>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">A real ticket: perforation, notch cut-outs, QR. Yellow = yours and valid.</p>
+        </div>
+
+        <!-- 09 PROFILE ------------------------------------------------------- -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">09 · Profile</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="statusbar"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+              <div class="apphead">
+                <span style="width:40px"></span>
+                <span class="apphead__title">Profile</span>
+                <button class="btn btn--ghost btn--icon" aria-label="Settings"><svg width="16" height="16"><use href="#i-sliders"/></svg></button>
+              </div>
+              <div class="screen__body screen__gutter">
+                <div class="profile-head">
+                  <span class="avatar avatar--lg">OA</span>
+                  <p class="t-h3">Olalekan Adeyemi</p>
+                  <p class="t-caption">+234 803 ••• 4412 · Member since 2024</p>
+                </div>
+                <div class="profile-stats">
+                  <div><p class="t-num" style="font-size:var(--text-18);font-weight:700">128</p><p class="stat__label">Trips</p></div>
+                  <div><p class="t-num" style="font-size:var(--text-18);font-weight:700">₦42k</p><p class="stat__label">Saved</p></div>
+                  <div><p class="t-num" style="font-size:var(--text-18);font-weight:700">4.9</p><p class="stat__label">Rating</p></div>
+                </div>
+
+                <div class="settings" style="margin-top:var(--space-5)">
+                  <a href="#screens"><svg width="18" height="18"><use href="#i-ticket"/></svg><span class="grow">My tickets</span><svg width="16" height="16"><use href="#i-chev"/></svg></a>
+                  <a href="#screens"><svg width="18" height="18"><use href="#i-wallet"/></svg><span class="grow">Payment methods</span><svg width="16" height="16"><use href="#i-chev"/></svg></a>
+                  <a href="#screens"><svg width="18" height="18"><use href="#i-pin"/></svg><span class="grow">Saved places</span><svg width="16" height="16"><use href="#i-chev"/></svg></a>
+                </div>
+                <div class="settings" style="margin-top:var(--space-3)">
+                  <a href="#screens"><svg width="18" height="18"><use href="#i-bell"/></svg><span class="grow">Delay alerts</span><span class="switch"></span></a>
+                  <a href="#screens"><svg width="18" height="18"><use href="#i-wifi"/></svg><span class="grow">Offline tickets</span><span class="switch"></span></a>
+                  <a href="#screens"><svg width="18" height="18"><use href="#i-shield"/></svg><span class="grow">Trip sharing</span><span class="switch switch--off"></span></a>
+                </div>
+                <button class="btn btn--outline btn--block" style="margin-top:var(--space-5)">Sign out</button>
+                <p class="t-caption" style="text-align:center;margin-top:var(--space-3);margin-bottom:var(--space-4)">Eko Way v1.0.0 · Made in Lagos</p>
+              </div>
+              <div class="tabbar">
+                <button class="tabbar__item"><svg><use href="#i-home"/></svg>Home</button>
+                <button class="tabbar__item"><svg><use href="#i-map"/></svg>Map</button>
+                <button class="tabbar__item"><svg><use href="#i-ticket"/></svg>Tickets</button>
+                <button class="tabbar__item tabbar__item--active"><svg><use href="#i-user"/></svg>Profile</button>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">Grouped settings on paper cards, toggles always ink-on-yellow when on.</p>
+        </div>
+
+        <!-- 10 SUCCESS ------------------------------------------------------- -->
+        <div class="sg-phone-wrap">
+          <div class="sg-phone-cap">10 · Confirmation</div>
+          <div class="phone">
+            <div class="phone__island"></div>
+            <div class="phone__screen">
+              <div class="statusbar statusbar--inverse"><span>9:41</span><span class="statusbar__right"><svg width="15" height="15"><use href="#i-signal"/></svg><svg width="15" height="15"><use href="#i-wifi"/></svg><svg width="20" height="20"><use href="#i-battery"/></svg></span></div>
+              <div class="screen appcanvas--ink" style="background:var(--ink-900);color:#fff">
+                <div class="success">
+                  <span class="success__badge"><svg width="40" height="40"><use href="#i-check"/></svg></span>
+                  <div>
+                    <h3 class="t-h2" style="color:#fff">Seat confirmed</h3>
+                    <p class="t-body-sm" style="color:var(--ink-300);margin-top:var(--space-2);max-width:30ch">Oshodi → Ikeja, 08:42. Your ticket is saved and works without data.</p>
+                  </div>
+                  <div class="card" style="background:#141413;border-color:#262623;width:100%;text-align:left">
+                    <div class="card__body">
+                      <div class="row-between"><span class="t-caption" style="color:var(--ink-300)">Reference</span><span class="t-mono" style="color:#fff;font-size:var(--text-12)">EW-8842-019</span></div>
+                      <hr class="divider" style="background:#262623;margin:var(--space-3) 0">
+                      <div class="row-between"><span class="t-caption" style="color:var(--ink-300)">Paid</span><span class="t-num" style="color:var(--yellow-400);font-weight:700">₦650</span></div>
+                    </div>
+                  </div>
+                  <div style="width:100%;margin-top:auto">
+                    <button class="btn btn--primary btn--block">View ticket</button>
+                    <button class="btn btn--ghost btn--block" style="color:var(--ink-300);margin-top:var(--space-2)">Back to home</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="sg-phone-note">Ink screen, one badge, one confirmation. The only place the spring easing is loud.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================== 17. FLOWS ============================== -->
+    <section class="sg-section" id="flows">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">17 — Product</p>
+          <h2 class="t-h1">Core flows</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Three jobs cover 90% of use. Each flow is deliberately short: the target is a ticket in under 60
+        seconds and 5 taps from a cold open.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6);grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div class="sg-card">
+          <div class="row-between"><h3 class="t-h4">A · Catch the next danfo</h3><span class="tag tag--brand">Primary</span></div>
+          <ol class="t-body-sm t-muted stack-2" style="margin-top:var(--space-3);list-style:decimal;padding-left:1.2em">
+            <li>Home → tap search or a Nearby stop</li>
+            <li>Map opens with live vehicles and your blue dot</li>
+            <li>Tap a vehicle → sheet shows ETA, fare, seats</li>
+            <li>Book this seat → choose fare → pay</li>
+            <li>Ticket issued → saved offline → scan at stand</li>
+          </ol>
+          <p class="t-caption" style="margin-top:var(--space-3)">5 taps · target 45s · failure path: cash reserve (no card needed)</p>
+        </div>
+        <div class="sg-card">
+          <div class="row-between"><h3 class="t-h4">B · Plan a journey</h3><span class="tag tag--neutral">Secondary</span></div>
+          <ol class="t-body-sm t-muted stack-2" style="margin-top:var(--space-3);list-style:decimal;padding-left:1.2em">
+            <li>Route block: from → to (or use current location)</li>
+            <li>Compare modes with chips: danfo / BRT / keke</li>
+            <li>Route detail shows stop-by-stop timeline + traffic</li>
+            <li>Select seats → same checkout as flow A</li>
+          </ol>
+          <p class="t-caption" style="margin-top:var(--space-3)">Fare and duration are always shown together — never one without the other</p>
+        </div>
+        <div class="sg-card">
+          <div class="row-between"><h3 class="t-h4">C · Travel with no data</h3><span class="tag tag--warning">Critical path</span></div>
+          <ol class="t-body-sm t-muted stack-2" style="margin-top:var(--space-3);list-style:decimal;padding-left:1.2em">
+            <li>Offline banner states the cache time</li>
+            <li>Saved routes still resolve from cache</li>
+            <li>Tickets open from local storage, QR renders offline</li>
+            <li>Booking attempt queues and explains itself</li>
+          </ol>
+          <p class="t-caption" style="margin-top:var(--space-3)">No dead ends: every offline screen offers a next step</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 18. CONTENT ============================== -->
+    <section class="sg-section" id="content">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">18 — Product</p>
+          <h2 class="t-h1">Content &amp; voice</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Sound like a well-informed friend who knows the road, not a company. Short sentences, real place
+        names, no exclamation marks. Naira always with the symbol and no decimals: <strong>₦650</strong>,
+        never NGN 650.00.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6);grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        <div class="sg-card">
+          <p class="t-eyebrow">Voice attributes</p>
+          <ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)">
+            <li><strong>Clear</strong> — one idea per sentence. Plain words over jargon.</li>
+            <li><strong>Local</strong> — danfo, keke, conductor, stand, along. Use the words people use.</li>
+            <li><strong>Calm</strong> — a delay is stated, not dramatised.</li>
+            <li><strong>Honest</strong> — if a number is an estimate, say “approx.”.</li>
+          </ul>
+        </div>
+        <div class="sg-card">
+          <p class="t-eyebrow">Microcopy patterns</p>
+          <table class="sg-table" style="margin-top:var(--space-2)">
+            <tbody>
+              <tr><td>Button</td><td>Verb + object: “Book this seat”</td></tr>
+              <tr><td>Empty</td><td>State + next step: “No tickets yet — book a seat…”</td></tr>
+              <tr><td>Error</td><td>What happened + what to do: “Payment failed. Try another method.”</td></tr>
+              <tr><td>Time</td><td>“6 min”, “08:42”, never “0h 6m”</td></tr>
+              <tr><td>Fare</td><td>“₦650”, tabular, no decimals</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sg-card">
+          <p class="t-eyebrow">Say / don't say</p>
+          <ul class="t-body-sm stack-2" style="margin-top:var(--space-2)">
+            <li><span style="color:var(--green-700)">✓</span> “Danfo leaves when it fills.” <br><span style="color:var(--red-700)">✕</span> “Vehicle departure is demand-based.”</li>
+            <li><span style="color:var(--green-700)">✓</span> “You're offline. Showing routes saved at 08:12.” <br><span style="color:var(--red-700)">✕</span> “Network error (E_NET_004).”</li>
+            <li><span style="color:var(--green-700)">✓</span> “4 seats left” <br><span style="color:var(--red-700)">✕</span> “Hurry! Only a few spots!!”</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== 19. ACCESSIBILITY ============================== -->
+    <section class="sg-section" id="a11y">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">19 — Product</p>
+          <h2 class="t-h1">Accessibility</h2>
+        </div>
+        <span class="tag tag--success">WCAG 2.2 AA</span>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Our users include people who cannot read a moving screen at arm's length in daylight. AA is the
+        floor, and the checks below are the ones that actually get broken.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6)">
+        <div class="sg-card"><p class="t-eyebrow">Colour &amp; contrast</p><ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)"><li>Body text ≥ 4.5:1; large text ≥ 3:1.</li><li>Controls and focus rings ≥ 3:1 against their surroundings.</li><li>State is never colour-only: pair with a label, icon, border or weight.</li></ul></div>
+        <div class="sg-card"><p class="t-eyebrow">Touch &amp; pointer</p><ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)"><li>Minimum target 44×44 (48 preferred); 8px between targets.</li><li>No gesture-only actions — every swipe has a button equivalent.</li><li>Actions reachable with one thumb: primary CTA in the bottom third.</li></ul></div>
+        <div class="sg-card"><p class="t-eyebrow">Type &amp; zoom</p><ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)"><li>16px minimum body on mobile.</li><li>Layout survives 200% text zoom without clipping.</li><li>No text inside images — everything is real text.</li></ul></div>
+        <div class="sg-card"><p class="t-eyebrow">Motion</p><ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)"><li><code>prefers-reduced-motion</code> turns all durations to 0ms.</li><li>No animation loops except the live pulse, which stops when data is stale.</li><li>Nothing flashes more than 3 times per second.</li></ul></div>
+        <div class="sg-card"><p class="t-eyebrow">Screen readers</p><ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)"><li>Tabs announce state (<code>aria-selected</code>); sheets trap focus and close on Escape.</li><li>Icons are decorative unless they are the only label — then they get an accessible name.</li><li>Fare and ETA updates announce politely, never interrupt.</li></ul></div>
+        <div class="sg-card"><p class="t-eyebrow">Environment</p><ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)"><li>Outdoor mode: contrast targets met at 100% brightness in sun.</li><li>Offline states are explicit — no fake live indicators.</li><li>Low-end device budget: no blur above 6px, no continuous animation on map.</li></ul></div>
+      </div>
+    </section>
+
+    <!-- ============================== 20. HANDOFF ============================== -->
+    <section class="sg-section" id="handoff">
+      <div class="sg-section__head">
+        <div>
+          <p class="sg-section__num">20 — Product</p>
+          <h2 class="t-h1">Handoff</h2>
+        </div>
+      </div>
+      <hr class="sg-rule">
+      <p class="sg-section__desc">
+        Tokens live in <code>styles/tokens.css</code> and are mirrored in <code>tokens.json</code> for
+        Figma, React Native and native. Components consume semantic aliases only — that rule is what
+        keeps design and code in sync.
+      </p>
+
+      <div class="grid-auto" style="margin-top:var(--space-6);grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+        <div class="sg-card">
+          <p class="t-eyebrow">Token pipeline</p>
+          <code class="sg-code" style="margin-top:var(--space-3)">styles/tokens.css   → CSS custom properties (web)
+tokens.json         → Figma variables / RN theme / iOS, Android
+docs/DESIGN-SYSTEM.md → the rules and rationale
+index.html          → this living style guide</code>
+          <p class="t-body-sm t-muted" style="margin-top:var(--space-3)">Change a raw value in one place. Both the guide and the product follow.</p>
+        </div>
+        <div class="sg-card">
+          <p class="t-eyebrow">Naming contract</p>
+          <code class="sg-code" style="margin-top:var(--space-3)">--{category}-{role}-{step}
+
+--yellow-400        raw ramp value   (never in components)
+--bg-brand          semantic alias   (use this)
+--text-secondary
+--space-4
+--radius-lg
+--duration-base</code>
+        </div>
+        <div class="sg-card">
+          <p class="t-eyebrow">Definition of done</p>
+          <ul class="t-body-sm t-muted stack-2" style="margin-top:var(--space-2)">
+            <li>No hard-coded hex, px colour or font size in a component.</li>
+            <li>All four states designed: default, loading, empty, error.</li>
+            <li>Contrast verified, focus visible, 44px targets.</li>
+            <li>Reduced motion and 200% zoom checked.</li>
+            <li>Copy reviewed against voice rules.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="t-h3" style="margin-top:var(--space-8)">What is deliberately out of scope for v1</h3>
+      <div class="sg-card" style="margin-top:var(--space-3)">
+        <div class="row" style="flex-wrap:wrap;gap:var(--space-2)">
+          <span class="tag tag--neutral">Dark mode</span>
+          <span class="tag tag--neutral">Driver app</span>
+          <span class="tag tag--neutral">Tablet / desktop layouts</span>
+          <span class="tag tag--neutral">Illustration system</span>
+          <span class="tag tag--neutral">Data-viz for admin</span>
+          <span class="tag tag--neutral">Yoruba / Pidgin localisation</span>
+        </div>
+        <p class="t-body-sm t-muted" style="margin-top:var(--space-3)">Dark-mode tokens already exist in <code>tokens.css</code> under <code>[data-theme="dark"]</code>; the rest are queued for v1.1 – v2.</p>
+      </div>
+
+      <hr class="divider" style="margin:var(--space-8) 0">
+      <div class="row-between" style="flex-wrap:wrap;gap:var(--space-3)">
+        <div class="wordmark">
+          <span class="wordmark__mark"><svg width="20" height="20"><use href="#i-bus"/></svg></span>
+          <span class="wordmark__text">Eko <em>Way</em></span>
+        </div>
+        <p class="t-caption">Design system v1.0.0 · Updated 16 November 2026 · Lagos</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Scroll-spy for the side navigation.
+  const links = [...document.querySelectorAll('.sg-nav a[href^="#"]')];
+  const sections = links
+    .map(l => document.querySelector(l.getAttribute('href')))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + id));
+  };
+
+  const io = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (visible) setActive(visible.target.id);
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: [0.01, 0.2, 0.6] });
+
+  sections.forEach(s => io.observe(s));
+  if (sections[0]) setActive(sections[0].id);
+
+  // Smooth anchor scrolling without hijacking the URL hash for every nudge.
+  document.querySelectorAll('.sg-nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.replaceState(null, '', a.getAttribute('href'));
+    });
+  });
+</script>
+</body>
+</html>
