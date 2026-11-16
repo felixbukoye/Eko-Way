@@ -19,27 +19,24 @@ npm install
 npm run data    # rebuild app/public/data/graph.json from data/raw/ (optional)
 npm run dev     # app  → http://localhost:5173
 npm run guide   # style guide → http://localhost:8123
-npm test        # 19 planner + dataset tests
+npm test        # 22 planner + dataset tests
 npm run build   # production build to dist/
 ```
 
 ## The idea in one paragraph
 
-The supplied route graph is historical research data (2022–2023) with **every
-ride edge disabled for public directions**. Rather than paper over that, the app
-is built around it: search and ranking are real, the map is drawn from our own
-captured geometries, and the results screen answers honestly —
-*“we do not have a verified route for this journey yet”* — with the evidence for
-that direction and what would unblock it. Research mode is an explicit opt-in that
-shows historical candidate chains, each one labelled as unverified evidence with
-its source period and sample size. The journey screen's call to action is
-disabled and says so.
+The supplied route graph is recorded Lagos trips from 2022–2023. For this MVP
+the app routes on that graph directly: search, ranking, the SVG map and the
+step-by-step itinerary all work off the recorded data. Fares are not in the
+dataset, so every screen shows “Fare not available” rather than a number; ride
+times are medians of recorded trips. A direction with no recorded connection
+gets an explicit no-route state instead of a guessed line.
 
 ## What's in the box
 
 ```
 app/                     the product
-  js/planner.js          gate, graph search, ranking, search  ← the important file
+  js/planner.js          routing switch, graph search, ranking, place search
   js/RouteMap.jsx        SVG map of recorded geometry (no third-party tiles)
   js/screens/            Home · SearchPicker · Results · Journey · Data · About
   css/app.css            app shell, built only from design-system tokens
@@ -49,23 +46,26 @@ scripts/build_graph.py   validation + normalisation + trace downsampling
 design-system/           tokens.css · components.css · screens.css (shared with the guide)
 docs/DESIGN-SYSTEM.md    the design system spec
 docs/APP-BUILD.md        PRD → implementation record, requirement by requirement
-tests/planner.test.js    the safety gate, locked down
+tests/planner.test.js    routing, fare policy and modelling rules, locked down
 index.html               the design-system style guide
 ```
 
-## The gate
+## The routing switch
 
-`plan()` in `app/js/planner.js` short-circuits to `no_verified_route` unless the
-caller explicitly passes `{ researchMode: true }`, and even then it returns
-`public_directions_allowed: false`. `tests/planner.test.js` asserts this holds for
-all 30 directed hub pairs. Do not “fix” it without verification records.
+`MVP.unverifiedRouting` in `app/js/planner.js` is the single decision point.
+It is `true` for the MVP, so `plan()` returns journeys from the recorded graph.
+Flip it to `false` and `plan()` short-circuits to `no_verified_route` for every
+query, exactly as the PRD specifies — no other code change needed.
+`plan(index, query, { strictGate: true })` does the same for one call, which is
+how `tests/planner.test.js` keeps the strict path covered.
 
-## Honest limitations
+## Known limitations
 
-Historical feed only (24 Nov 2022 – 31 Dec 2023). No Keke data. No fares. No live
-arrivals. Eight FLM corridor names with no stops or geometry. Proximity
-candidates are a review queue, not walk paths. Data rights for public or
-commercial redistribution are unresolved.
+Recorded feed only (24 Nov 2022 – 31 Dec 2023), so ride times reflect that
+period's traffic. No Keke data. No fares. No live arrivals. Eight FLM corridor
+names with no stops or geometry. Walks between nearby stops are opt-in and use
+straight-line distance. Data rights for public or commercial redistribution are
+unresolved.
 
 ---
 

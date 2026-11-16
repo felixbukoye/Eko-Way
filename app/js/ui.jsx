@@ -110,8 +110,12 @@ export function Sheet({ onClose, labelledBy, children }) {
   );
 }
 
-export function GateBadge({ children = 'Public directions disabled' }) {
-  return <span className="pill-note pill-note--gate"><Icon.lock size={11} /> {children}</span>;
+/**
+ * Provenance badge for a journey: when the ride durations were recorded.
+ * It states the observation period, nothing about verification.
+ */
+export function DataBadge({ children = 'Recorded rides' }) {
+  return <span className="pill-note"><Icon.clock size={11} /> {children}</span>;
 }
 
 export { MODE_LABEL };

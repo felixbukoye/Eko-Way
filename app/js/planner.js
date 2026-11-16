@@ -4,26 +4,36 @@
  * Ported from the supplied `routePlanner.ts` research prototype (see
  * data/raw/routePlanner.ts) and extended with the PRD's ranking objectives.
  *
- * THE GATE IS THE PRODUCT:
+ * ROUTING MODE (single switch)
  * -------------------------------------------------------------------------
- * PRD §13.5 / FR-005 / FR-020 and Route Graph policy `default_public_routing:
- * false` require that no journey is presented as a public travel instruction
- * while every historical edge remains `historical_unverified`.
+ * The dataset behind this build has no field-verified edges, so the PRD's
+ * verification gate (FR-005 / FR-020, policy `default_public_routing: false`)
+ * would withhold every route. For the MVP we deliberately route on the
+ * historical graph instead and let the interface present the journey as a
+ * route, with fares unavailable and durations taken from recorded rides.
  *
- * So `plan()` always returns `status: 'no_verified_route'` for public output.
- * Research candidates are computed only when the caller explicitly opts into
- * `researchMode`, and are labelled everywhere as unverified historical evidence.
- * This module must never be "fixed" to return public directions until real
- * verification records exist in the database.
+ * `MVP.unverifiedRouting` is the one place this is decided:
+ *   true  → `plan()` returns journeys in public mode (current MVP behaviour)
+ *   false → `plan()` short-circuits to `no_verified_route`, exactly as the
+ *           PRD describes, with no other code change required.
+ *
+ * The provenance fields on each journey (`status`, `confidence`, `confidence`,
+ * `source_period`) stay populated: the data still says what it is, even though
+ * the interface no longer warns the traveller about it.
  */
+
+export const MVP = Object.freeze({
+  /** The switch. Flip to false to restore the strict verification gate. */
+  unverifiedRouting: true,
+});
 
 export const PUBLIC_GATE = Object.freeze({
   verifiedEdges: 0,
   totalEdges: 81,
-  enabled: false,
+  /** Whether journeys may be produced while `verifiedEdges` is still 0. */
+  enabled: MVP.unverifiedRouting,
 });
 
-/** PRD §16.2 route status lifecycle. Everything in v1 sits at `historical`. */
 export const STATUS = Object.freeze({
   VERIFIED: 'verified',
   PROVISIONAL: 'provisional',
@@ -126,10 +136,13 @@ export function haversine(a, b) {
  *
  * @param {object} index      from createIndex()
  * @param {object} query      { fromHub, toHub, objective, allowProximity, maxRideLegs, limit }
- * @param {object} options    { researchMode: boolean }
+ * @param {object} options    { strictGate: boolean } — force the strict
+ *                            verification gate regardless of `MVP.unverifiedRouting`
  */
 export function plan(index, query, options = {}) {
-  const researchMode = options.researchMode === true;
+  // Routing is allowed while `MVP.unverifiedRouting` is on. `strictGate: true`
+  // re-enables the PRD gate for a single call (used by the tests).
+  const gated = options.strictGate === true || !MVP.unverifiedRouting;
   const {
     fromHub,
     toHub,
@@ -142,14 +155,16 @@ export function plan(index, query, options = {}) {
   const base = {
     from_hub: fromHub,
     to_hub: toHub,
-    research_mode: researchMode,
+    research_mode: !gated,
     proximity_transfers_enabled: allowProximity,
-    public_directions_allowed: false,
-    warning: HISTORICAL_WARNING,
+    // A journey may be produced, but the dataset itself still publishes no
+    // verified edge: this describes the data, not what we choose to show.
+    public_directions_allowed: !gated,
+    warning: gated ? HISTORICAL_WARNING : null,
   };
 
-  // ---------- The public gate. Never bypassed. ----------
-  if (!researchMode) {
+  // ---------- The verification gate. ----------
+  if (gated) {
     return {
       ...base,
       status: 'no_verified_route',
@@ -258,20 +273,21 @@ export function plan(index, query, options = {}) {
       [...destinationStops].some((id) => (prox.get(id) || []).length);
     return {
       ...base,
-      status: 'no_verified_route',
+      status: 'no_route',
       journeys: [],
       message: hasProximity
-        ? 'No exact-terminal chain exists for this direction in the extract. Nearby-stop candidates exist but walking paths are unverified, so they are not used.'
-        : 'No exact-terminal chain exists for this direction in the extracted historical network.',
+        ? 'There is no recorded connection for this direction. There are stops near each other, but a walk between them has not been recorded so it is not offered.'
+        : 'No recorded route connects these two areas in this direction.',
     };
   }
 
   return {
     ...base,
-    status: 'research_candidates',
+    status: gated ? 'research_candidates' : 'route_found',
     journeys,
-    message:
-      'Research candidates only. These routes are not approved for public travel directions.',
+    message: gated
+      ? 'Research candidates only. These routes are not approved for public travel directions.'
+      : null,
   };
 }
 

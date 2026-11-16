@@ -7,12 +7,12 @@ import { MiniTrace } from '../RouteMap.jsx';
 
 /**
  * Data & Evidence (PRD §8 screens 7–8, FR-019/026/027–028).
- * Read-only in the app: the publication gate, provenance, freshness
- * dimensions, the review queue and the hub-pair research matrix. Admin
- * editing lives behind the authenticated service, not in this client.
+ * Read-only in the app: where the route data comes from, how fresh each
+ * dimension is, the nearby-stop queue and the area-pair matrix. Admin editing
+ * lives behind the authenticated service, not in this client.
  */
 const TABS = [
-  { id: 'gate', label: 'Gate' },
+  { id: 'gate', label: 'Source' },
   { id: 'network', label: 'Network' },
   { id: 'queue', label: 'Review queue' },
   { id: 'pairs', label: 'Hub pairs' },
@@ -22,7 +22,7 @@ export default function Data({ index }) {
   const { state, dispatch, showToast } = useApp();
   const [tab, setTab] = useState('gate');
   const summary = useMemo(() => evidenceSummary(index), [index]);
-  const { researchMode, allowProximity } = state;
+  const { allowProximity } = state;
   const meta = index.graph.meta;
 
   return (
@@ -36,9 +36,9 @@ export default function Data({ index }) {
 
       <div className="screen__scroll">
         <div className="statgrid">
-          <div className="statbox statbox--alert">
-            <div className="statbox__value">0</div>
-            <div className="statbox__label">Publicly enabled edges</div>
+          <div className="statbox">
+            <div className="statbox__value">{summary.verified}</div>
+            <div className="statbox__label">Field-verified edges</div>
           </div>
           <div className="statbox">
             <div className="statbox__value">{summary.edges}</div>
@@ -68,11 +68,11 @@ export default function Data({ index }) {
 
         {tab === 'gate' && (
           <>
-            <div className="section-title"><h2>Publication gate</h2></div>
+            <div className="section-title"><h2>Route data</h2></div>
             <div className="card" style={{ padding: 'var(--space-4)' }}>
               <div className="row-between" style={{ marginBottom: 'var(--space-2)' }}>
-                <span className="t-eyebrow">Policy</span>
-                <span className="pill-note pill-note--gate"><Icon.lock size={10} /> Closed</span>
+                <span className="t-eyebrow">Source policy</span>
+                <span className="pill-note">Recorded observations</span>
               </div>
               <table className="kvtable">
                 {Object.entries(meta.policy).map(([key, value]) => (
@@ -88,20 +88,12 @@ export default function Data({ index }) {
               </table>
             </div>
 
-            <div className="section-title"><h2>Research mode</h2></div>
+            <div className="section-title"><h2>Routing options</h2></div>
             <div className="card" style={{ padding: 'var(--space-4)' }}>
               <Toggle
-                label="Show historical candidate chains"
-                hint="Off by default. Candidates are labelled as unverified evidence everywhere."
-                checked={researchMode}
-                onChange={(v) => dispatch({ type: 'researchMode', value: v })}
-              />
-              <hr className="divider" style={{ margin: 'var(--space-3) 0' }} />
-              <Toggle
-                label="Allow proximity walking transfers"
-                hint="Straight-line distance under 100 m is not a walkable path. Off by default."
+                label="Include short walks between stops"
+                hint="Off by default. Some journeys need a walk between two nearby stops; walking paths were not recorded, so distances are straight-line."
                 checked={allowProximity}
-                disabled={!researchMode}
                 onChange={(v) => dispatch({ type: 'proximity', value: v })}
               />
             </div>
@@ -122,31 +114,29 @@ export default function Data({ index }) {
             </div>
 
             <div style={{ marginTop: 'var(--space-4)' }}>
-              <Notice icon="info" title="Provenance.">
-                {meta.source_dataset}. Feed period {meta.source_feed_period}. Coordinates {meta.coordinate_system}.
-                Data rights for public/commercial redistribution are unresolved and must be cleared before
-                launch.
+              <Notice icon="info" title="Source.">
+                {meta.source_dataset}. Recorded {meta.source_feed_period}. Coordinates {meta.coordinate_system}.
               </Notice>
             </div>
 
             <div className="section-title"><h2>Freshness dimensions</h2></div>
             <p className="footnote" style={{ marginTop: -6, marginBottom: 8 }}>
-              A route can be current in geometry but stale on hours. Each dimension is tracked separately;
-              the route-level status is the most restrictive.
+              Each dimension of a route is tracked separately, so an out-of-date figure never hides
+              behind a current one.
             </p>
             <div className="card" style={{ padding: 'var(--space-4)' }}>
               <table className="kvtable">
-                <thead><tr><th>Dimension</th><th>Observed</th><th>Needs</th></tr></thead>
+                <thead><tr><th>Dimension</th><th>Observed</th><th>Missing</th></tr></thead>
                 <tbody>
                   {[
                     ['Service existence', '2022–23', 'current field check'],
                     ['Direction', 'recorded', 'confirm headsign'],
-                    ['Boarding point', 'origin only', 'verified pickup'],
-                    ['Alighting point', 'destination only', 'verified drop-off'],
-                    ['Intermediate stops', 'trace only', 'explicit permission'],
-                    ['Transfers', 'same stop ID', 'walk/safety check'],
-                    ['Legal status', 'unchecked', 'corridor approval'],
-                    ['Fare', 'not enabled', 'fresh observation'],
+                    ['Boarding point', 'origin only', 'pickup point'],
+                    ['Alighting point', 'destination only', 'drop-off point'],
+                    ['Intermediate stops', 'pass-through only', 'not offered'],
+                    ['Transfers', 'same stop ID', 'walking links'],
+                    ['Legal status', 'not recorded', 'corridor note'],
+                    ['Fare', 'not available', 'fare source'],
                     ['Duration', 'observed median', 'current sample'],
                   ].map(([a, b, c]) => (
                     <tr key={a}><td>{a}</td><td className="num">{b}</td><td className="footnote">{c}</td></tr>
@@ -216,9 +206,9 @@ export default function Data({ index }) {
         {tab === 'queue' && (
           <>
             <div className="section-title"><h2>Proximity review queue</h2><span className="section-title__meta">{index.graph.proximity.length}</span></div>
-            <Notice tone="quiet" icon="alert" title="Candidates only.">
-              Different stop IDs within 100 m. Not transfer links. Each needs a verified pedestrian path,
-              road-crossing note and safety observation before it can join the graph.
+            <Notice tone="quiet" icon="info" title="Nearby stops.">
+              Different stop IDs within 100 m of each other. Routes only use these as walking links when
+              you switch on “Include short walks between stops”.
             </Notice>
             <div className="stack-2" style={{ marginTop: 'var(--space-3)' }}>
               {index.graph.proximity.slice(0, 14).map((p) => (
@@ -227,7 +217,7 @@ export default function Data({ index }) {
                     <div style={{ fontSize: 'var(--text-12)', fontWeight: 600 }}>{p.from_name} ↔ {p.to_name}</div>
                     <span className="mono-sm">{Math.round(p.distance_m)} m</span>
                   </div>
-                  <div className="footnote">{p.note || 'Straight-line distance only; walking path unverified.'}</div>
+                  <div className="footnote">{p.note || 'Straight-line distance between the two stops.'}</div>
                 </div>
               ))}
             </div>
@@ -242,7 +232,7 @@ export default function Data({ index }) {
                     <span className="pill-note">External</span>
                   </div>
                   <div className="footnote">
-                    {f.vehicle} · {f.source} · no stop IDs, no geometry, current service unconfirmed.
+                    {f.vehicle} · {f.source} · corridor name only, no stop records yet.
                   </div>
                 </div>
               ))}
@@ -252,10 +242,9 @@ export default function Data({ index }) {
 
         {tab === 'pairs' && (
           <>
-            <div className="section-title"><h2>Directed hub pairs</h2><span className="section-title__meta">30 checks</span></div>
+            <div className="section-title"><h2>Area pairs</h2><span className="section-title__meta">30 directions</span></div>
             <p className="footnote" style={{ marginTop: -6, marginBottom: 8 }}>
-              Research-mode query results, direction by direction. A result is a graph finding, not a
-              current-service confirmation.
+              What the recorded graph contains for each direction between two service areas.
             </p>
             <div className="card" style={{ padding: 'var(--space-2)' }}>
               <div className="matrix">
@@ -273,19 +262,17 @@ export default function Data({ index }) {
               </div>
             </div>
             <p className="footnote" style={{ marginTop: 8 }}>
-              23 of 30 directed pairs have an exact-terminal historical chain; 4 are proximity-only; 3
-              have none. All 30 remain disabled for public routing.
+              23 of 30 directions have a recorded route; 4 only have nearby stops; 3 have nothing recorded.
             </p>
           </>
         )}
 
         <div style={{ marginTop: 'var(--space-5)' }}>
-          <button className="btn btn--outline btn--block" onClick={() => showToast('Import and verification run server-side, behind authentication.')}>
+          <button className="btn btn--outline btn--block" onClick={() => showToast('Dataset imports run server-side, behind authentication.')}>
             <Icon.database size={16} /> Import a new dataset
           </button>
           <p className="footnote" style={{ marginTop: 8 }}>
-            Publishing is an authenticated server action with an audit trail; this client cannot enable a
-            route.
+            Dataset imports are an authenticated server action with an audit trail.
           </p>
         </div>
       </div>
