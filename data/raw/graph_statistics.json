@@ -1,0 +1,20 @@
+{
+  "source_trip_records": 162,
+  "distinct_directed_route_patterns": 81,
+  "unique_stop_nodes": 194,
+  "exact_terminal_interchanges": 11,
+  "proximity_transfer_candidates_under_100m": 56,
+  "official_external_flm_corridor_candidates": 8,
+  "route_trace_geometry_features": 162,
+  "mode_pattern_counts": {
+    "Danfo (yellow)": 36,
+    "LT Bus": 14,
+    "Danfo (other colours)": 10,
+    "Korope (other colours)": 3,
+    "Korope (yellow)": 18
+  },
+  "patterns_with_observed_duration": 81,
+  "patterns_with_observed_shape_distance": 81,
+  "all_publicly_enabled": false,
+  "note": "Pattern counts are deduplicated by route ID, mode, trip direction and ordered stop sequence. They are historical only."
+}

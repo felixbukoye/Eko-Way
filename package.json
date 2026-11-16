@@ -1,0 +1,23 @@
+{
+  "name": "eko-way",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Eko Way — Lagos public transport navigator. Mobile-first app built on the Eko Way design system and the Route Graph v1 research dataset.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "data": "python3 scripts/build_graph.py",
+    "test": "node --test tests/*.test.js",
+    "guide": "python3 -m http.server 8123 --bind 0.0.0.0"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "vite": "^8.3.8"
+  }
+}

@@ -1,0 +1,31 @@
+from_hub,to_hub,exact_terminal_path_count_returned,best_exact_origin_stop,best_exact_destination_stop,best_exact_modes,best_exact_route_names,best_exact_historical_duration_sum_min,proximity_path_count_returned,proximity_only_path_found,public_directions_enabled,status
+Yaba,Surulere,3,Yabatech WAEC,Ojuelegba (Lawanson Road),Korope (yellow),Ojuelegba (Lawanson Road) - Yabatech WAEC,7.6,3,False,False,historical candidate only
+Yaba,Ikeja,2,Yaba (Phase 1),Ikeja (Underbridge),Danfo (yellow),Ikeja (Underbridge) - Yaba (Phase 1),44.1,3,False,False,historical candidate only
+Yaba,Oshodi,3,Sabo Yaba,Oshodi (Ilupeju),Danfo (yellow),Oshodi (Ilupeju) - Sabo Yaba,25.0,3,False,False,historical candidate only
+Yaba,CMS,0,,,,,,3,True,False,proximity-only candidate; walking transfer unverified
+Yaba,Lekki Phase 1,3,Yaba (Phase 2),Lekki Phase 1 Bus Stop,Danfo (yellow) + Korope (other colours),Yaba (Phase 2) - Obalende (Lewis Street) (6) | Obalende - Lekki Phase 1 Bus Stop,32.2,3,False,False,historical candidate only
+Surulere,Yaba,3,Ojuelegba (Union Bank),Yabatech WAEC,Korope (yellow),Ojuelegba (Lawanson Road) - Yabatech WAEC,8.3,3,False,False,historical candidate only
+Surulere,Ikeja,3,Ojuelegba (Union Bank),Allen Roundabout,Danfo (yellow),Allen Roundabout - Ojuelegba (Union Bank),20.4,3,False,False,historical candidate only
+Surulere,Oshodi,3,Ojuelegba (Union Bank),Oshodi (Brown),Danfo (yellow),Oshodi (Brown) - Ojuelegba (Union Bank),29.3,3,False,False,historical candidate only
+Surulere,CMS,2,Masha Surulere,C.M.S (Motorpark),Danfo (yellow),Masha Surulere - C.M.S (Motorpark),36.1,3,False,False,historical candidate only
+Surulere,Lekki Phase 1,0,,,,,,3,True,False,proximity-only candidate; walking transfer unverified
+Ikeja,Yaba,2,Ikeja (Old Secretariat),Sabo Yaba,Danfo (yellow),Ikeja - Sabo Yaba,34.0,3,False,False,historical candidate only
+Ikeja,Surulere,3,Ikeja (Old Secretariat),Barrack Surulere,Danfo (other colours),Ikeja (Old Secretariat) - Barrack Surulere (4),24.1,3,False,False,historical candidate only
+Ikeja,Oshodi,3,Ikeja (Underbridge),Oshodi (Brown),Korope (yellow),Ikeja (Underbridge) - Oshodi (Brown) (6),6.8,3,False,False,historical candidate only
+Ikeja,CMS,1,Ikeja (Underbridge),C.M.S (CMS Bookshop),LT Bus,Ikeja (Underbridge) - C.M.S (CMS Bookshop),64.7,3,False,False,historical candidate only
+Ikeja,Lekki Phase 1,0,,,,,,3,True,False,proximity-only candidate; walking transfer unverified
+Oshodi,Yaba,1,Oshodi (Ilupeju),Sabo Yaba,Danfo (yellow),Oshodi (Ilupeju) - Sabo Yaba,23.1,3,False,False,historical candidate only
+Oshodi,Surulere,1,Oshodi (Brown),Ojuelegba (Union Bank),Danfo (yellow),Oshodi (Brown) - Ojuelegba (Union Bank),25.7,3,False,False,historical candidate only
+Oshodi,Ikeja,3,Oshodi (Brown),Ikeja (Underbridge),Korope (yellow),Ikeja (Underbridge) - Oshodi (Brown) (1),10.8,3,False,False,historical candidate only
+Oshodi,CMS,3,Oshodi (Isale),C.M.S (CMS Bookshop),Danfo (yellow),Oshodi - C.M.S (CMS Bookshop) (4),47.2,3,False,False,historical candidate only
+Oshodi,Lekki Phase 1,1,Oshodi (Market),Lekki Phase 1 Bus Stop,LT Bus,Oshodi (Market) - Lekki Phase 1 Bus Stop,51.7,3,False,False,historical candidate only
+CMS,Yaba,0,,,,,,2,True,False,proximity-only candidate; walking transfer unverified
+CMS,Surulere,1,C.M.S (Motorpark),Ojuelegba (Underbridge),Danfo (other colours),Ojuelegba - C.M.S (Motorpark),22.7,1,False,False,historical candidate only
+CMS,Ikeja,1,C.M.S (CMS Bookshop),Ikeja (Underbridge),LT Bus,Ikeja (Underbridge) - C.M.S (CMS Bookshop),52.6,3,False,False,historical candidate only
+CMS,Oshodi,3,C.M.S (CMS Bookshop),Oshodi (Market),LT Bus,Oshodi (Market) - C.M.S (CMS Bookshop) (2),26.1,3,False,False,historical candidate only
+CMS,Lekki Phase 1,1,Marina,Lekki Phase 1 Bus Stop,Korope (other colours),Marina - Lekki Phase 1 Bus Stop,38.9,3,False,False,historical candidate only
+Lekki Phase 1,Yaba,0,,,,,,0,False,False,No exact-terminal chain in extracted graph
+Lekki Phase 1,Surulere,0,,,,,,0,False,False,No exact-terminal chain in extracted graph
+Lekki Phase 1,Ikeja,0,,,,,,0,False,False,No exact-terminal chain in extracted graph
+Lekki Phase 1,Oshodi,1,Lekki Phase 1 Bus Stop,Oshodi (Market),LT Bus,Oshodi (Market) - Lekki Phase 1 Bus Stop,67.1,1,False,False,historical candidate only
+Lekki Phase 1,CMS,1,Lekki Phase 1 Bus Stop,Marina,Korope (other colours),Marina - Lekki Phase 1 Bus Stop,42.8,1,False,False,historical candidate only

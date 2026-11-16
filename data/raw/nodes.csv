@@ -1,0 +1,195 @@
+node_id,stop_name,latitude,longitude,service_hub,is_supporting_interchange,source_period,evidence_status
+stop_9c93827d-e629-4da1-aa2a-d8a624d2fbb3,C.M.S (CMS Bookshop),6.45194,3.39129,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_78a7a29b-88c0-4d42-8ec0-9bad17226ff5,C.M.S (CMS Bookshop),6.45169,3.39079,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_53076c5c-a53a-4be7-ac6c-14138f9e5b0c,C.M.S (CMS Bookshop),6.45079,3.39223,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b583385a-5fe1-4121-ab3c-5b358af250d7,C.M.S (CMS Bookshop),6.45127,3.39313,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_78d3f746-5922-436b-b1ec-78c3e22362da,C.M.S (CMS Bookshop),6.45142,3.3912,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_a921e076-fd52-464b-b440-b6f61cbe0f8f,C.M.S (CMS Bookshop),6.45229,3.39315,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_9fa1c8da-4183-4dc8-8f29-af60fdba6949,C.M.S (Motorpark),6.45185,3.38835,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_85ba4d2a-dbbb-4fed-8f49-371f0f054cdf,C.M.S (Motorpark),6.44946,3.39084,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_7661833f-d207-4a27-8474-9e93ce4bd6f8,C.M.S (Motorpark),6.45036,3.38914,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_3d14f031-1477-40fb-a19e-7dc82ff7d85f,"FCMB, Old Marina St.",6.45314,3.38606,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_2e49b045-9643-4886-b91d-0d904c28f2be,"Leventis, New Marina Rd.",6.45258,3.38444,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_285aec34-3b4b-4165-ba1a-66edb86eca66,Marina,6.45291,3.38655,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_2d649e1e-c128-475e-a942-e2d80e51d3ec,Marina,6.45514,3.38625,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_12bee37f-41c3-40c5-bee3-0fa2654b9141,"Oando, Old Marina St.",6.45372,3.38514,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_df7bc214-b405-4d6f-b1e7-5d35b21f5660,"UBA Headquarters, Marina Roundabout",6.45506,3.38305,CMS,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_ac9453cb-c26a-411f-b67e-793168e0843c,Allen Roundabout,6.60647,3.34933,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_93fbc6c4-8163-48c2-8a02-7cee59e5218f,Allen Roundabout,6.60687,3.34945,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_00b36854-c6eb-4575-bf5a-930a5d9f5d17,Ikeja (Along),6.59854,3.33453,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_34c1fb56-50d9-4dae-b230-0ceff927047f,Ikeja (Old Secretariat),6.59313,3.34302,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_a0b2dc7a-5070-40b4-b234-f22792bc43a3,Ikeja (Old Secretariat),6.59421,3.34733,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_35fb4120-696c-4666-82f3-7975cb6f3b58,Ikeja (Old Secretariat),6.59271,3.3432,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_173cb5e1-d0c2-47b0-916e-e831f4a81c43,Ikeja (Underbridge),6.59642,3.34114,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_3b136aa1-f63a-409b-b35f-7573a29e0ecf,Ikeja (Underbridge),6.59552,3.33842,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_9c2513d1-ae42-41f3-a67c-85ff5ba65dc7,Ikeja (Underbridge),6.59644,3.34138,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d9524b94-23cd-4449-b635-d3ffd87c5547,Ikeja (Underbridge),6.59748,3.34187,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_2a01e9fa-78e0-4d1a-adea-4dfa7fe33b4f,Ikeja (Underbridge),6.596,3.3391,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c2558982-d90e-4fb6-8ff5-9b270416c676,Ikeja (Underbridge),6.59859,3.34268,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_2760bb4c-5b7b-4fc1-80da-cc60ffcd5478,Ikeja (Underbridge),6.59654,3.34263,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_dfd8c262-9187-44b5-8ccf-5d42460f8149,Ikeja (Underbridge),6.59585,3.33785,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_8d17a396-6f5f-436a-b9f3-457809e961d8,Ikeja (Underbridge),6.59608,3.33906,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_768bcdd0-df96-4e88-8c2a-7b7cd195ddc2,Ikeja (Underbridge),6.59627,3.33796,Ikeja,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_682bea9b-d909-4a97-a30d-bb8f9690dc45,Lekki Phase 1 Bus Stop,6.43597,3.45552,Lekki Phase 1,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_f9553295-2853-41c3-afc8-bc0f86416c39,Lekki Phase 1 Bus Stop,6.4351,3.45593,Lekki Phase 1,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_cfaaa894-054f-4efe-97b9-7b833a6eaf18,Sandfill Bus Stop,6.43553,3.44265,Lekki Phase 1,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d65a4135-53b1-4d5e-9ff5-281599eae810,Oshodi (Brown),6.55905,3.35056,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_8ab65f13-fcd1-45dd-ac92-b86518d95a0f,Oshodi (Brown),6.55872,3.3504,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_5d6ee3a4-d684-473c-9748-61b3f5c6afa8,Oshodi (Brown),6.55861,3.35007,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_40bd08d7-ffb2-4cd5-b9f5-12e823b57003,Oshodi (Ilupeju),6.55631,3.35206,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_bee5869f-112b-4b2f-98f2-990c2c21e33c,Oshodi (Ilupeju),6.55518,3.35278,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_7597f6dd-af21-45eb-b809-487bd0049dd4,Oshodi (Isale),6.55603,3.35152,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_72070d81-feac-43fc-bcfa-b60fd9d0ff78,Oshodi (Isale),6.55404,3.35228,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_45122e5d-aac4-4a93-9465-d7666333dfc1,Oshodi (Market),6.55548,3.35039,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c8479d70-8d16-404c-9141-05c421438001,Oshodi (Market),6.55636,3.35137,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_2daceb5c-3ed2-4127-8825-a661696c9a55,Oshodi (Oke),6.55448,3.34808,Oshodi,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_f68c2454-a140-4aab-8b4e-c44262a352dd,Barrack Surulere,6.5055,3.36375,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_373df25f-5959-40f7-ac7d-afd519f168f1,Barrack Surulere,6.50623,3.3636,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_59e3d851-6ff6-4c15-9e35-dd3a70a273cd,Barrack Surulere,6.5058,3.36411,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_50b0afed-ce22-4cf2-a454-565993a0d5c7,Barrack Surulere,6.50593,3.36348,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_3f92831c-53b8-4399-8950-cecfc2ca90ba,Barrack Surulere,6.50594,3.36374,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_0478b771-31f7-405d-a5eb-f4f732ba0f64,Lawanson,6.51273,3.34945,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_71434e0f-3a34-49e8-98c9-95dc5e36087e,Masha Surulere,6.5016,3.3508,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c1289708-6887-4cda-9100-1edb52edabe9,Ojuelegba (Lawanson Road),6.51032,3.36295,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c98c6ac5-e63d-45d7-874f-1d3e838e3926,Ojuelegba (Makinde Street),6.50924,3.36291,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d9ab906f-5b7a-4e69-8f9e-43e2e6d04e63,Ojuelegba (Underbridge),6.50966,3.3629,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_26d6326f-8b6d-41c4-af3c-a4633125ad16,Ojuelegba (Union Bank),6.51032,3.36346,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_39201d8c-c238-48cd-98f4-a899b9258147,Ojuelegba (Union Bank),6.51136,3.36336,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b0a46dc5-cb7d-4ae2-af04-68bd2b4719c2,Ojuelegba (Union Bank),6.5106,3.36314,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_8eff29d8-e4bf-4805-84d8-bbe6471eeae4,Ojuelegba Bus Stop,6.5123,3.36366,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c7567a3c-9db6-4fd7-b8f2-345236dd01ec,Stadium,6.49855,3.36172,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_eb57397b-1d88-4bd9-b52f-7c750ceba2d2,Stadium Bus Stop,6.49808,3.36217,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_f399a968-df7b-46dd-96b7-2cf21d9d7100,Stadium Bus Stop,6.49605,3.36187,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_ae972d54-59b9-44d2-86c5-ef726607b851,"Stadium, Western Ave",6.49794,3.36153,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_e088dbf6-a6b0-4345-9f03-b92ef3a4d350,"Stadium, Western Ave.",6.49745,3.36144,Surulere,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_98219e37-c7a0-4863-808a-e4ad4981d9da,Adekunle Bus Stop,6.49175,3.38222,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_5ec9ec61-4451-4c69-a002-5fcd06ade100,Adekunle Bus Stop,6.49508,3.38078,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_08ccc53a-4684-40ba-8e1d-3e9c60f2dcbf,Adekunle Bus Stop,6.49139,3.38267,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_ef0fafbe-494a-4ec4-9a46-667acdd8cf6b,"Adekunle Bus Stop, Wright St.",6.49146,3.38217,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d1c43d47-82d7-4fc3-b309-86cc349d8d23,Sabo Bus Stop,6.50605,3.37786,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_afaded28-7e47-4d69-bdfb-d1cce493db31,Sabo Bus Stop,6.50612,3.37809,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b1191e09-2879-442a-b02b-e4bbf11a4f60,Sabo Yaba,6.50581,3.37766,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_e5429952-bf3c-407c-95ea-e5c0da4a6220,Sabo Yaba,6.50562,3.3778,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d69c8511-64da-46d4-8499-4f74eea704c8,Sabo Yaba,6.50631,3.37816,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_bb844041-eeab-404c-8309-98920acc26d2,Sabo Yaba,6.50615,3.37751,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_13b2d402-2ae5-4058-a549-6a0b32cae243,Yaba (Phase 1),6.51246,3.37049,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_93e335a7-9ee7-4181-8f09-c6817ee58b56,Yaba (Phase 1),6.51257,3.3706,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_33284b94-d6c0-4ef2-9dec-77c1884aa4d5,Yaba (Phase 2),6.50833,3.37248,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_cb7f039b-715c-4451-a041-f053cf5493c4,Yaba (Phase 2),6.50916,3.37109,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_f015583a-c878-4a34-81ec-12714860a21d,Yaba (Phase 2),6.5081,3.37211,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_239266ca-db3f-4417-947e-3d45d2b48c12,Yaba (Phase 2),6.50383,3.37402,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_e1f278eb-6cbe-40d5-aa55-a39e407e9efd,Yaba Phase 1,6.51237,3.3702,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_bbee1fd0-452a-432d-b6d0-5fe133f3e9db,Yabatech Bus Stop,6.51574,3.37549,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_6f7d5c30-928b-46c2-b472-fcee08067dd3,Yabatech Gate,6.51908,3.37167,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_07def4b7-174e-4073-bea5-4553cf381a54,Yabatech WAEC,6.51774,3.37095,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_4acb6b44-14c1-41d0-b62a-5343e649bf71,Yabatech WAEC,6.51928,3.37156,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b792a09a-0e32-4ce3-8527-7eaaef2badfa,Yabatech WAEC,6.51799,3.37135,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_48b17679-9d31-4834-be70-3f0ff2f1a57b,Yabatech WAEC,6.51933,3.3717,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_6205a18f-848a-42f4-9986-5834866e01e8,Yabatech WAEC,6.5175,3.3714,Yaba,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_7d475085-ca80-446d-a03a-64df2340b1c4,1004 Bus Stop,6.43984,3.43192,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_e1624a83-d22d-4c27-8c92-5e5aac54522a,7up Toll Gate,6.59999,3.3784,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_e3e388b7-d37e-41fb-851c-8a4402a45435,Abule Onigbagbo Bus Stop,6.58613,3.35746,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_49bafd80-41bd-4c58-88b7-ed083c48fa37,"Abule, Mobolaji Bank Anthony Way",6.58624,3.35766,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_221bc85d-436b-44cc-9a79-6440be798bb1,"Adeniji, Third Axial Rd.",6.46404,3.39349,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_679b44a4-b9c8-43c7-9dc5-3c40414f718a,"Adeniji, Third Axial Rd.",6.46132,3.39585,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_430569e8-68e6-4e7b-a6f8-a8ac182921b0,"Afisman Drive, Oduyemi St.",6.59691,3.33595,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d4903669-2820-483b-a46d-a703ce0ff222,Agbaoku St. & Opebi Rd.,6.59408,3.35726,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_89e71df7-229d-4709-be22-817ae96c68d3,"Alagomeji, Herbert Macaulay Way",6.49963,3.37835,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_fd46c3e2-6d1d-4597-9c61-55fbc52e30c5,"Alapere Estate, Third Axial Rd.",6.58483,3.39026,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_ccf8f7e3-96da-4289-bc6b-39797b73e420,Anthony Bus Stop,6.55818,3.3671,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_133f1329-f3cf-442e-abed-c81dbcb035fb,"Anthony, Apapa Oworonshoki Expy.",6.55605,3.37175,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_bfda4bd0-8c9c-4eb9-b425-e800abb721e8,"Anthony, Ikorodu Rd.",6.56051,3.36656,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_17b0a992-2b0c-4caf-88e7-fc3a34eaeb95,"Anthony, Ikorodu Rd.",6.60026,3.37492,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_037b3934-dfd1-4417-b779-865c42463018,Apogbon St. & Griffin St.,6.45898,3.38264,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_fa3f4453-aa9b-4a54-807e-cd6b9ff52c44,Apongbon Underbridge,6.45678,3.38208,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d95313ce-e838-484e-85cf-319088a541c2,Awoyokun Bus Stop,6.53628,3.36703,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_53dedbf2-f94b-412e-b65a-ed34e7f08b87,"Ayietoro, Makoko Rd.",6.49253,3.387,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_13b71d95-d781-49b3-9924-2c9f23186ad6,"Babaloshola, Agege Motor Rd.",6.52636,3.35732,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b45c15ed-4d24-4459-8a8f-04124a8ef1f8,Barrack Bus Stop,6.50559,3.36417,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_43f6d411-e903-48b6-b36b-e1e0fa2b840f,Barracks Bus Stop,6.50725,3.3634,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c243be8c-8b02-4d6d-bf7f-4499adbfd51c,Campos St. & Broad St.,6.44991,3.39364,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_7645fd23-0111-4bea-9112-463b34b61df0,"Casino, Herbert Macaulay Way",6.49677,3.38033,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_532ea23a-781c-4932-953d-30f421b0ae97,"Charley Boy, Apapa Oworonshoki Expy.",6.54877,3.37953,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_885c8aeb-1811-4e31-b764-13279b75e062,City Mall Bus Stop,6.44402,3.40253,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_2227444c-9656-49af-bbde-f61181955b01,"Cosmolen Hotel, Alhaji Masha Rd.",6.50078,3.35251,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b6415cb7-d8d2-437b-b54b-1090dd8e381f,Costain,6.48191,3.36902,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_133b510b-932a-47cd-8ed7-b745af544a14,Costain,6.48209,3.36938,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_4065bfe3-3046-417c-8ab9-95c89a1ad8b2,"Custodian Building, Commercial Ave.",6.50644,3.37566,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c5719777-cfc8-4449-be7f-cdd4ed9d682b,"Duro Soleye Hospital, Opebi Rd.",6.59961,3.353,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_5037a3c9-3150-4498-9082-69e11f77e66b,"Eco Bank, Herbert Macaulay Way",6.50505,3.37789,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_ceac8baf-ad61-4e98-8fe5-3159bc0daf57,"Eko Bridge, Apongbon St.",6.46013,3.38241,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b77f8609-b7c8-4c1b-b4df-a5098968c916,"Eko Hospital, Mobolaji Bank Anthony Way",6.58707,3.35731,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_6878fd59-71a2-4e44-a65b-ab77d9aab0d3,"Elediye, Ikorodu Rd.",6.53678,3.36763,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_33c62d5c-039a-4c5a-a364-faf0ddbbdfd3,Empire Bus Stop,6.51759,3.36524,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_efd7c0b2-a432-42fd-b2a4-24fc4f2fa92f,Estate Bus Stop,6.49144,3.38992,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_aea8aebf-d564-4453-823b-76ea90eed31e,Estate Bus Stop,6.49129,3.38972,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d0900b90-fb1d-450b-a236-ac4bec819c86,Fadeyi Bus Stop,6.52374,3.36724,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_1f15c083-f457-4abe-87c4-9f8224738f0f,Fadeyi Underbridge,6.52814,3.36718,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_75ba9ff2-10f2-4601-a16a-472b43303b0a,Fadeyi Underbridge,6.52772,3.36769,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_54e8bd8f-cfc3-436d-a0e5-b9a4d32f3242,"Freedom Park, Broad St.",6.44822,3.39657,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_2c4867ce-c408-4b34-8cd3-9a89770f2781,Gbagada Bus Stop,6.54921,3.38812,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_a768ab51-873d-49ac-8a01-585530c9a785,"Hotel Newcastle, Apapa Oworonshoki Expy.",6.55653,3.37113,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_6fee7897-60d7-419b-afd7-5ee7802b5490,Idi Iroko Bus Stop,6.56402,3.36696,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_61a60e52-2fce-4bfc-b757-09ff5c0414e3,Idi Iroko Bus Stop,6.5651,3.36644,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_e265ca0a-7679-4116-a3e5-ce3506c89c14,Iponri,6.48619,3.36482,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_2e50eb68-5b7f-494d-ab3e-2622de8c6b79,Iponri Bridge,6.48755,3.36442,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d08f103d-2f9f-4e7b-a22a-f1cfc4bb12f3,Iponri Estate,6.48649,3.36497,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_ca7506fe-7b04-4d80-83ec-0996bf2f4cc6,Iyana Oworo Bus Stop,6.54565,3.39858,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_17f2ada7-baaf-4ef4-9351-7f450809068d,Jibowu,6.51708,3.36868,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b975b780-789e-4617-8953-9759e017036f,"Jibowu, Ikorodu Rd.",6.522,3.36742,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_002a6f55-1c70-46e6-9083-ccdc94f5e2d6,"Jibowu, Ikorodu Rd.",6.5207,3.36736,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_1f5ec98c-8c29-47a5-bce5-9f92eb88ea7d,Kingsway Bus Stop,6.578,3.36103,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_efc0a6b7-82fc-437f-af2b-59b4d3bb28f2,"LASTMA HQ, Apapa Oworonshoki Expy.",6.55849,3.36091,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_51864486-9818-45c7-80e4-d4e375b179c9,Ladipo St. & Agege Motor Rd,6.53041,3.35317,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_f54989ee-829c-4bc5-9138-79101fa8c3a3,"Lagos State College of Health Tech., Harvey Rd.",6.50939,3.37289,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_6f4de4eb-35df-4c83-8285-686bf7ababa6,"Leventis, Mobolaji Bank Anthony Way",6.57444,3.36244,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_d62b3f11-4993-4569-a159-d8f5e4cab386,"Leventis, Mobolaji Bank-Anthony Way",6.57326,3.36313,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_462a4169-fad3-400c-9f27-2c7cc981146a,"M.O.J Fuel Station, Agege Motor Rd.",6.56589,3.34752,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_11518181-072f-4bec-ba18-6a7b6f175888,"MRS Filling Station, Kodesoh St.",6.59443,3.34191,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_627d35fa-4a41-46cb-8ad9-b2fca72de4c2,Makoko Bus Stop,6.4935,3.38155,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_f70ab639-51b5-4c5f-a335-e921cf39dd88,Makoko Undebridge,6.49232,3.38701,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_39787dd9-b106-4379-9e71-1e924b1b4e46,Maryland,6.57191,3.36727,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_065dc53e-6744-41d3-b34b-c6a29c976e4c,Maryland Bus Stop,6.57019,3.36753,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_3b105d7f-604b-4364-b1da-47c8aec1dff9,Maryland Bus Stop,6.57153,3.3673,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_b1e8da85-e72e-455d-8996-391ec2e69e86,"Mobil Filling Station, Ikorodu Rd.",6.55306,3.36718,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_6369ba24-56bb-4067-8bbd-f51d3cec463d,"Mobil Petrol Station, Itire Rd.",6.51265,3.35576,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_3fd9cb91-f206-4f03-a633-49c70be2bf0d,Mushin Market,6.52879,3.35367,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_7078842e-e47e-4580-9707-56f366cff02d,"Mushin, Agege Motor Rd.",6.52928,3.35347,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_0e23e5b2-729c-4454-afa4-c4789451afbe,Nitel Bus Stop,6.58711,3.35701,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_8b72b9a9-48c0-4249-b326-607eaa741d60,"Obalande, Lewis St.",6.45133,3.40788,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_3ae871c9-70d5-4cfa-abed-e4c1ac66d01d,Obalende (Igbosere Road),6.44881,3.40689,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_fb7cd4b3-955b-4091-a4e1-da2337bb944b,Obalende (Lewis Street),6.44984,3.40769,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_4229ee8b-20a7-4d65-9123-2fe2ce61086c,Obalende (Lewis Street),6.44943,3.40706,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_a29a12d0-dacc-45b1-a0e2-c3c319951704,Obalende (Oando),6.4494,3.40993,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_0b5612ef-5f3e-425f-8a1b-cb170eb9a09f,Obalende (Underbridge),6.44956,3.40743,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_8ecddadc-e476-4f7b-8646-7ac5b8e103fa,Obalende (Underbridge),6.44928,3.4076,,True,2022-11-24 to 2023-12-31,historical_unverified
+stop_a030fa6f-8b9a-48db-b2b1-7b6398cfa1d5,Obanikoro Bus Stop,6.54996,3.3668,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_a6c85842-0235-4073-955f-08cd1cc83901,Obanikoro Bus Stop,6.54715,3.36681,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_bf7c40dd-0999-4840-a204-a8c8ad79dfb7,Obanikoro Bus Stop,6.54654,3.36746,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_69fc3f89-e664-4ad9-b244-1198e35c3500,Ogudu Bus Stop,6.56242,3.39577,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_7302b80f-0790-4d49-9539-a3411850f2d8,"Olorunshogo, Agege Motor Rd.",6.53667,3.35333,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_42014a28-d569-4e08-9c4a-568144fe568c,Olowu Bus Stop,6.59715,3.34389,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_530c23e8-ace6-4b03-ae6a-88c096b723db,Olowu Bus Stop,6.45757,3.40627,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_a08ccf53-f738-4d0e-bcd1-585aa2b76462,Olowu St. & Mobolaji Bank Anthony Way,6.59406,3.34445,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c3806a32-02cb-4306-9355-9395cc413aeb,Onipanu Bus Stop,6.53395,3.36708,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_bfe2c4b1-f9da-4a13-9b58-7eb04ec254c8,Onipanu Bus Stop,6.5332,3.36764,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_31945281-6d46-4013-9e42-aa68e621fcbd,Oriyomi St.,6.59636,3.34392,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_010cba46-791d-4026-b4df-ddfcfe52d7f9,Palm Groove Bus Stop,6.53906,3.36698,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_76fc200c-d16e-49ec-9568-882b4d6d47b7,Palmgroove Bus Stop,6.54166,3.36752,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_6816fb28-4666-498c-b123-53ae74dfa480,Palmgrove Bus Stop,6.54176,3.36692,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_76a902a1-3a5b-4cde-bee5-9a6a823532a0,Panti Bus Stop,6.49459,3.38097,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c9b2c52d-462e-466f-a418-2ca7e75b28c3,"Police Force Cooperative Building, Herbert Macaulay Way",6.49524,3.38092,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b35ce09e-d74e-4eb0-b6e0-d6600cb2816e,Sheraton Bus Stop,6.58385,3.35865,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_a520e313-b10f-46f6-a252-1440bdba561c,"Sheraton Hotel, Opebi Link Rd.",6.58443,3.35987,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_f2053640-f79f-4fb3-bf71-4c9038cc85ef,"Sheraton, Mobolaji Bank Anthony Way",6.5821,3.35933,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_b37c88e4-76de-4462-9bc0-fdcc6dbba567,Shoprite Bus Stop,6.61569,3.35736,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_f24bc302-f362-46d2-a6d7-639699195f38,Spencer Bus Stop,6.50217,3.37734,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_71ed3b60-ab6a-459f-b38d-87ca9cb810cb,Tafawa Balewa Square,6.44449,3.40199,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_fc44d55e-33f0-4f0a-8f4d-92293a33930a,Testing Ground Bus Stop,6.61266,3.35427,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_66794dfa-ac34-4500-8552-17acd87f1f94,Thomas Ajufo St. & Opebi Rd.,6.58683,3.36343,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_3f45a1b5-7fa0-47e7-8fd7-cb7c6f600173,"Total Filling Station, Ishaga Rd.",6.51199,3.35895,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_4f174452-0052-4a6a-bf55-ed0474244fb8,Town Planning Bus Stop,6.55794,3.36661,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_ee3f0779-d645-4917-ad31-1865e0a6cc35,"Town Planning, Ikorodu Rd.",6.55692,3.36666,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_3a84d692-35dd-43f7-b003-b74175f9f7e2,Unity Rd. & Mobolaji Bank Anthony Way,6.59341,3.34585,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_a6744d89-3454-49b8-bbc2-97ed28ea70ea,University Rd. & Herbert Macaulay Way,6.51424,3.37615,,False,2022-11-24 to 2023-12-31,historical_unverified
+stop_c07269bb-c5b1-4094-a9b7-c16e22c7ce21,"WAEC, Herbert Macaulay Way",6.51764,3.37133,,False,2022-11-24 to 2023-12-31,historical_unverified
