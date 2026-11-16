@@ -4,24 +4,37 @@
    (styles/components.css). Nothing here introduces a new colour or size.
    ========================================================================== */
 
-html, body, #root { height: 100%; }
+html, body, #root {
+  height: 100%;
+  /* The app owns scrolling. A single document scroller plus internal scrollers
+     is what made the top of a long screen unreachable. */
+  overflow: hidden;
+}
 
 body {
   background: var(--paper-300);
   overscroll-behavior-y: none;
+  margin: 0;
 }
 
-/* Desktop: an ambient canvas with the phone-width app column centred. */
+/* Desktop: an ambient canvas with the phone-width app column centred.
+   A DEFINITE height here is what lets the inner .screen__scroll actually
+   scroll: with only min-height the flex column grows with its content and the
+   overflow is clipped by .app { overflow: hidden }. */
 .appframe {
   display: flex;
   justify-content: center;
   align-items: stretch;
-  min-height: 100dvh;
+  /* 100% of #root, which is 100% of the viewport. Using % rather than dvh keeps
+     this correct inside an embedded preview iframe as well as a real browser. */
+  height: 100%;
+  overflow: hidden;
 }
 
 .appframe__aside {
   display: none;
   width: 320px;
+  overflow-y: auto;
   padding: var(--space-10) var(--space-8) var(--space-8);
   border-right: var(--border-width) solid var(--border-subtle);
   background: var(--paper-200);
@@ -37,13 +50,11 @@ body {
   flex-direction: column;
   width: 100%;
   max-width: 480px;
-  min-height: 100dvh;
+  height: 100%;
+  min-height: 0;
   background: var(--bg-canvas);
   box-shadow: 0 0 0 1px rgba(20, 20, 19, 0.06);
   overflow: hidden;
-}
-@media (min-width: 1080px) {
-  .app { min-height: 100dvh; }
 }
 
 /* ---------------------------------------------------------------- statusbar */
@@ -100,6 +111,7 @@ body {
 
 /* --------------------------------------------------------------- brand hero */
 .hero {
+  flex: 0 0 auto;
   padding: 0 var(--space-4) var(--space-6);
   background: var(--yellow-400);
   color: var(--ink-900);
@@ -120,20 +132,25 @@ body {
 .screen {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
+  overflow: hidden;
 }
 .screen__scroll {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
-  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
   padding: 0 var(--space-4) var(--space-8);
   scrollbar-width: thin;
+  /* Keep the last element clear of the dock / tab bar. */
+  scroll-padding-bottom: var(--space-8);
 }
 .screen__scroll--flush { padding-left: 0; padding-right: 0; }
 .screen__dock {
   flex: 0 0 auto;
+  flex-shrink: 0;
   padding: var(--space-3) var(--space-4) calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
   background: var(--bg-surface);
   border-top: var(--border-width) solid var(--border-subtle);
@@ -471,7 +488,10 @@ body {
 .actionrow { display: flex; gap: var(--space-2); }
 .actionrow > * { flex: 1; }
 
-.tabbar--app { position: relative; }
+.tabbar--app {
+  position: relative;
+  flex: 0 0 auto;
+}
 .tabbar__item:disabled { opacity: 0.45; cursor: not-allowed; }
 
 /* ------------------------------------------------------------- misc bits */

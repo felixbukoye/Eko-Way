@@ -102,6 +102,15 @@ export default function App() {
     );
   }, [index, dispatch, showToast]);
 
+  // Every screen gets its own scroll container; reset it on navigation so a new
+  // screen never opens halfway down.
+  const screen = state.screen;
+  React.useEffect(() => {
+    document.querySelectorAll('.screen__scroll').forEach((el) => {
+      el.scrollTop = 0;
+    });
+  }, [screen]);
+
   // Browser back button maps to in-app back (FR: no dead ends).
   useEffect(() => {
     const onPop = () => dispatch({ type: 'back' });
@@ -142,7 +151,6 @@ export default function App() {
     );
   }
 
-  const screen = state.screen;
   const showTabs = ['home', 'results', 'data', 'about'].includes(screen);
 
   return (
