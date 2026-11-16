@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '../icons.jsx';
 import { useApp } from '../store.jsx';
-import { StatusBar, Notice, GateBadge } from '../ui.jsx';
+import { StatusBar, Notice, DataBadge } from '../ui.jsx';
 import RouteMap from '../RouteMap.jsx';
 
 /**
@@ -11,7 +11,7 @@ import RouteMap from '../RouteMap.jsx';
  */
 export default function Home({ graph, onPlan, onUseLocation, locating, geoDenied }) {
   const { state, dispatch, showToast } = useApp();
-  const { origin, destination, recents, researchMode } = state;
+  const { origin, destination, recents } = state;
 
   const canPlan = Boolean(origin && destination && origin.id !== destination.id);
   const hubs = graph.hubs;
@@ -28,7 +28,7 @@ export default function Home({ graph, onPlan, onUseLocation, locating, geoDenied
             <div className="appbar__title" style={{ fontSize: 'var(--text-16)' }}>Eko Way</div>
             <div className="appbar__sub" style={{ color: 'rgba(11,11,10,.62)' }}>Lagos transport navigator</div>
           </div>
-          <GateBadge>Gate closed</GateBadge>
+          <DataBadge>{graph.meta.stats.ride_edges} recorded patterns</DataBadge>
         </div>
 
         <h1 className="hero__title">Where are you<br />going today?</h1>
@@ -115,18 +115,10 @@ export default function Home({ graph, onPlan, onUseLocation, locating, geoDenied
         </button>
 
         <div style={{ marginTop: 'var(--space-4)' }}>
-          {researchMode ? (
-            <Notice tone="ink" icon="database" title="Research mode is on.">
-              Candidate chains from the 2022–2023 historical graph are shown with warnings. They are
-              evidence for review, not travel instructions.
-            </Notice>
-          ) : (
-            <Notice icon="lock" title="No verified route is published yet.">
-              Every route in the current dataset is historical observation. Eko Way will tell you that
-              honestly instead of inventing directions. Turn on research mode in Data &amp; Evidence to
-              inspect candidates.
-            </Notice>
-          )}
+          <Notice icon="info" title="Built on recorded rides.">
+            Routes come from trips recorded across Lagos between {graph.meta.source_feed_period}. Fares are
+            not published yet, so the app shows “Fare not available” rather than a guess.
+          </Notice>
         </div>
 
         <div className="section-title">
@@ -185,9 +177,8 @@ export default function Home({ graph, onPlan, onUseLocation, locating, geoDenied
         </div>
         <RouteMap graph={graph} height={200} showAllTraces />
         <p className="footnote" style={{ marginTop: 8 }}>
-          {graph.meta.stats.stops} recorded stop nodes · {graph.meta.stats.ride_edges} directed route
-          patterns · {graph.meta.stats.edges_with_trace} captured traces. Nothing here is enabled for
-          public routing.
+          {graph.meta.stats.stops} stops · {graph.meta.stats.ride_edges} route patterns ·{' '}
+          {graph.meta.stats.edges_with_trace} recorded traces across {graph.hubs.length} service areas.
         </p>
       </div>
     </div>

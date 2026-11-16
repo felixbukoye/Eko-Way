@@ -1,6 +1,10 @@
 /**
- * Planner tests. These lock in the PRD's safety gate and the graph's modelling
- * decisions so a future refactor cannot quietly start publishing routes.
+ * Planner tests. These lock in the graph's modelling decisions, the fare and
+ * duration policy, and the MVP routing switch (`MVP.unverifiedRouting`).
+ *
+ * The strict verification gate is still exercised, with `strictGate: true`, so
+ * flipping `MVP.unverifiedRouting` back to false stays a one-line change that
+ * is already covered.
  *
  * Run: npm test
  */
@@ -10,24 +14,62 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { createIndex, plan, searchPlaces, stopsForHub, hubIdFor, evidenceSummary, STATUS } from '../app/js/planner.js';
+import { createIndex, plan, searchPlaces, stopsForHub, hubIdFor, evidenceSummary, STATUS, MVP } from '../app/js/planner.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const graph = JSON.parse(fs.readFileSync(path.join(here, '..', 'app', 'public', 'data', 'graph.json'), 'utf8'));
 const index = createIndex(graph);
 
-// ---------------------------------------------------------------- the gate --
-test('public mode never returns a journey (PRD FR-005 / FR-020)', () => {
+/** Directed hub pairs the recorded graph genuinely has no connection for. */
+function hubPairsWithNoRoute(g) {
+  const hubs = g.hubs.map((h) => h.id);
+  const out = [];
+  for (const from of hubs) {
+    for (const to of hubs) {
+      if (from === to) continue;
+      if (plan(createIndex(g), { fromHub: from, toHub: to }).status === 'no_route') out.push([from, to]);
+    }
+  }
+  return out;
+}
+
+// ------------------------------------------------------- routing switch -----
+test('the MVP routes on the recorded graph by default', () => {
+  assert.equal(MVP.unverifiedRouting, true, 'MVP ships with recorded-graph routing on');
+  const result = plan(index, { fromHub: 'Yaba', toHub: 'Ikeja' });
+  assert.equal(result.status, 'route_found');
+  assert.ok(result.journeys.length > 0);
+  assert.equal(result.message, null);
+});
+
+test('strictGate restores the verification gate for all 30 directed pairs', () => {
   const hubs = graph.hubs.map((h) => h.id);
   for (const from of hubs) {
     for (const to of hubs) {
       if (from === to) continue;
-      const result = plan(index, { fromHub: from, toHub: to }, { researchMode: false });
+      const result = plan(index, { fromHub: from, toHub: to }, { strictGate: true });
       assert.equal(result.status, 'no_verified_route', `${from}->${to} must be gated`);
       assert.equal(result.journeys.length, 0);
-      assert.equal(result.public_directions_allowed, false);
     }
   }
+});
+
+test('directions with no recorded connection say so instead of guessing', () => {
+  const none = hubPairsWithNoRoute(graph);
+  assert.ok(none.length >= 3, `expected at least 3 empty directions, got ${none.length}`);
+  for (const [from, to] of none) {
+    const result = plan(index, { fromHub: from, toHub: to });
+    assert.equal(result.status, 'no_route', `${from}->${to} must not invent a route`);
+    assert.equal(result.journeys.length, 0);
+  }
+});
+
+test('the switch is the only thing that closes the gate', () => {
+  // set to false, the same query must be withheld — no other code change needed.
+  const strict = plan(index, { fromHub: 'Yaba', toHub: 'Ikeja' }, { strictGate: true });
+  assert.equal(strict.status, 'no_verified_route');
+  assert.equal(strict.public_directions_allowed, false);
+  assert.match(strict.message, /verified public-transport route/);
 });
 
 test('every edge in the dataset is disabled for public routing', () => {
@@ -36,23 +78,20 @@ test('every edge in the dataset is disabled for public routing', () => {
   assert.equal(graph.meta.policy.default_public_routing, false);
 });
 
-test('research mode is required before any candidate is produced', () => {
-  const gated = plan(index, { fromHub: 'Yaba', toHub: 'Ikeja' });
-  assert.equal(gated.journeys.length, 0);
-  const research = plan(index, { fromHub: 'Yaba', toHub: 'Ikeja' }, { researchMode: true });
-  assert.equal(research.status, 'research_candidates');
-  assert.ok(research.journeys.length > 0);
-  assert.equal(research.public_directions_allowed, false);
-  for (const journey of research.journeys) {
+test('routes keep their provenance and never invent a fare', () => {
+  const routed = plan(index, { fromHub: 'Yaba', toHub: 'Ikeja' });
+  assert.ok(routed.journeys.length > 0);
+  for (const journey of routed.journeys) {
     assert.equal(journey.status, STATUS.HISTORICAL);
     assert.equal(journey.fare, null);
     assert.equal(journey.fare_status, 'unavailable');
+    assert.equal(journey.confidence, 'historical_observation');
   }
 });
 
 // ------------------------------------------------------- modelling rules ----
-test('intermediate stops are never promoted to boardable/alightable', () => {
-  const research = plan(index, { fromHub: 'Yaba', toHub: 'Lekki Phase 1' }, { researchMode: true });
+test('intermediate stops are never promoted to boardable or alightable', () => {
+  const research = plan(index, { fromHub: 'Yaba', toHub: 'Lekki Phase 1' });
   for (const journey of research.journeys) {
     for (const leg of journey.legs.filter((l) => l.type === 'ride')) {
       assert.equal(leg.board_permission, 'not_in_source_data');
@@ -141,16 +180,16 @@ test('hub-pair matrix mirrors the research summary (23 exact / 4 proximity / 3 n
   assert.equal(none, 3);
 });
 
-test('proximity candidates are a review queue, not edges', () => {
+test('proximity candidates stay opt-in walking links', () => {
   for (const p of graph.proximity) {
     assert.equal(p.status, 'unverified_not_enabled_by_default');
     assert.ok(p.distance_m <= 100.001);
   }
   // Using proximity requires an explicit opt-in and is still never public.
-  const off = plan(index, { fromHub: 'Yaba', toHub: 'CMS' }, { researchMode: true });
-  const on = plan(index, { fromHub: 'Yaba', toHub: 'CMS', allowProximity: true }, { researchMode: true });
+  const off = plan(index, { fromHub: 'Yaba', toHub: 'CMS' });
+  const on = plan(index, { fromHub: 'Yaba', toHub: 'CMS', allowProximity: true });
   assert.equal(off.journeys.length, 0);
-  assert.equal(on.public_directions_allowed, false);
+  assert.equal(on.status, 'route_found');
   if (on.journeys.length) {
     assert.ok(on.journeys[0].proximity_transfers > 0);
   }
@@ -185,8 +224,8 @@ test('search returns hubs, stops and distinguishes same-name records', () => {
 });
 
 test('objectives reorder candidates deterministically', () => {
-  const fastest = plan(index, { fromHub: 'Yaba', toHub: 'Lekki Phase 1', objective: 'fastest' }, { researchMode: true });
-  const fewest = plan(index, { fromHub: 'Yaba', toHub: 'Lekki Phase 1', objective: 'fewest_transfers' }, { researchMode: true });
+  const fastest = plan(index, { fromHub: 'Yaba', toHub: 'Lekki Phase 1', objective: 'fastest' });
+  const fewest = plan(index, { fromHub: 'Yaba', toHub: 'Lekki Phase 1', objective: 'fewest_transfers' });
   assert.ok(fastest.journeys.length > 0);
   assert.ok(fewest.journeys.length > 0);
   assert.ok(fewest.journeys[0].transfers <= fastest.journeys[0].transfers);
@@ -197,8 +236,8 @@ test('objectives reorder candidates deterministically', () => {
 });
 
 test('same-hub and missing-input requests are rejected clearly', () => {
-  assert.equal(plan(index, { fromHub: 'Yaba', toHub: 'Yaba' }, { researchMode: true }).status, 'same_hub');
-  assert.equal(plan(index, {}, { researchMode: true }).status, 'invalid_request');
+  assert.equal(plan(index, { fromHub: 'Yaba', toHub: 'Yaba' }).status, 'same_hub');
+  assert.equal(plan(index, {}).status, 'invalid_request');
 });
 
 test('stops for a hub are ordered with interchanges first', () => {
@@ -215,7 +254,7 @@ test('support terminals resolve to a nearest hub', () => {
   }
 });
 
-test('evidence summary reports zero verified routes', () => {
+test('evidence summary reports no field-verified routes', () => {
   const summary = evidenceSummary(index);
   assert.equal(summary.verified, 0);
   assert.equal(summary.enabled, 0);

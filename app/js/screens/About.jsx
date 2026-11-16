@@ -10,7 +10,7 @@ import { StatusBar, AppBar, Notice } from '../ui.jsx';
  */
 export default function About({ index }) {
   const { state, dispatch } = useApp();
-  const { researchMode, recents } = state;
+  const { recents } = state;
   const stats = index.graph.meta.stats;
 
   return (
@@ -31,14 +31,14 @@ export default function About({ index }) {
           <div className="statbox"><div className="statbox__value">{stats.ride_edges}</div><div className="statbox__label">Directed patterns</div></div>
           <div className="statbox"><div className="statbox__value">{stats.stops}</div><div className="statbox__label">Stop nodes</div></div>
           <div className="statbox"><div className="statbox__value">{stats.interchanges}</div><div className="statbox__label">Interchanges</div></div>
-          <div className="statbox statbox--alert"><div className="statbox__value">0</div><div className="statbox__label">Verified routes</div></div>
+          <div className="statbox"><div className="statbox__value">{index.graph.routes.length}</div><div className="statbox__label">Route IDs</div></div>
         </div>
 
         <div style={{ marginTop: 'var(--space-4)' }}>
-          <Notice tone="ink" icon="shield" title="Where this stands.">
-            Eko Way v1 is a working product built on a historical research graph. The search, ranking,
-            map and evidence tooling are real; the routes are not yet verified, so public directions are
-            switched off by design.
+          <Notice tone="ink" icon="shield" title="About the data.">
+            Eko Way is a pilot. Routes are built from trips recorded across Lagos between{' '}
+            {stats.feed_period || index.graph.meta.source_feed_period}, so ride times reflect the traffic of
+            that period. Fares are not part of the dataset yet.
           </Notice>
         </div>
 
@@ -50,7 +50,7 @@ export default function About({ index }) {
             ['Keeps modes apart', 'Danfo, Korope and LT Bus are distinct; Keke is not manufactured.'],
             ['No same-name merging', 'Two stops with the same name stay separate records.'],
             ['No inferred permissions', 'Intermediate stops are trace points, not boarding points.'],
-            ['Shows its age', 'Every estimate carries its observation period and sample size.'],
+            ['Shows its age', 'Ride times are recorded medians, not promises about today.'],
           ].map(([title, body]) => (
             <div key={title} style={{ display: 'flex', gap: 10, padding: '9px 0', borderBottom: '1px solid var(--border-subtle)' }}>
               <Icon.check size={15} style={{ color: 'var(--green-700)', flex: '0 0 auto', marginTop: 2 }} />
@@ -81,24 +81,6 @@ export default function About({ index }) {
           </button>
         </div>
 
-        <div className="section-title"><h2>Evidence settings</h2></div>
-        <div className="card" style={{ padding: 'var(--space-4)' }}>
-          <div className="row-between">
-            <div>
-              <div style={{ fontSize: 'var(--text-13)', fontWeight: 600 }}>Research mode</div>
-              <div className="footnote">{researchMode ? 'On — candidate chains visible with warnings' : 'Off — public gate active'}</div>
-            </div>
-            <span className={`pill-note ${researchMode ? 'pill-note--warn' : 'pill-note--ok'}`}>{researchMode ? 'Research' : 'Public'}</span>
-          </div>
-          <button
-            className="btn btn--outline btn--block btn--sm"
-            style={{ marginTop: 'var(--space-3)' }}
-            onClick={() => dispatch({ type: 'researchMode', value: !researchMode })}
-          >
-            {researchMode ? 'Return to public mode' : 'Turn on research mode'}
-          </button>
-        </div>
-
         <div className="section-title"><h2>Sources</h2></div>
         <div className="card" style={{ padding: 'var(--space-4)' }}>
           <p className="t-body-sm t-muted">
@@ -107,8 +89,8 @@ export default function About({ index }) {
             held separately as official external candidates.
           </p>
           <p className="footnote" style={{ marginTop: 'var(--space-2)' }}>
-            Data-rights review for public or commercial redistribution is outstanding. Basemap is drawn
-            from our own recorded geometry, not a third-party tile service.
+            Maps are drawn from the recorded trip geometry in this dataset, not from a third-party tile
+            service.
           </p>
         </div>
 

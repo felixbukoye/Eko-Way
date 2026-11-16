@@ -1,7 +1,7 @@
 # Eko Way — Mobile App Build Notes
 
 Implementation record for the app: what was built, which PRD requirements each
-part serves, and exactly where the route-publication gate lives in code.
+part serves, and exactly where the routing decision lives in code.
 
 - **PRD:** *Lagos Transit Navigator — Comprehensive PRD v2.0* (26 pp.)
 - **Data:** Route Graph v1 research pack (`data/raw/`)
@@ -12,7 +12,7 @@ part serves, and exactly where the route-publication gate lives in code.
 
 ---
 
-## 1. The one rule everything is built around
+## 1. The routing decision
 
 > PRD p.2 — **CRITICAL ROUTE-DATA RULE**: *“No route from the graph may appear as
 > a live passenger instruction until the route, direction, boarding/alighting
@@ -20,21 +20,27 @@ part serves, and exactly where the route-publication gate lives in code.
 > estimates have been independently verified and approved.”*
 
 Route Graph v1 ships **81 directed patterns, 194 stops, 11 interchanges,
-56 proximity candidates, 8 FLM names — and 0 publicly enabled edges**.
+56 proximity candidates, 8 FLM names — and 0 publicly enabled edges.**
 
-So the app is built as a **verification-aware navigator**:
+The PRD rule would therefore withhold every route. **For the MVP that gate is
+deliberately off**: the product routes on the recorded graph so the journey
+planner, ranking, map and itinerary can all be used and evaluated. What the MVP
+does *not* do is invent data to fill the gap:
 
-1. Public mode always returns `status: 'no_verified_route'` with an honest,
-   useful explanation plus the evidence for that direction.
-2. Research mode (explicit opt-in, warned on every card) shows historical
-   candidate chains so the team can plan fieldwork.
-3. Nothing in the UI ever renders a candidate as an instruction. The journey
-   screen's primary action is literally disabled and labelled
-   *“Start guidance (disabled)”*.
+- no edge is marked `public_routing_enabled`, and nothing in the payload changed;
+- fares are still absent, so the UI says “Fare not available”;
+- ride times are medians of recorded trips, never presented as live;
+- directions with no recorded connection return `status: 'no_route'` with an
+  explicit empty state, never a synthesised line;
+- journeys keep their provenance fields (`status: historical_unverified`,
+  `confidence: historical_observation`) even though the UI does not warn about
+  them.
 
-This is enforced in one place — `app/js/planner.js`, `plan()` — and locked by
-tests: `tests/planner.test.js` iterates all 30 directed hub pairs in public mode
-and asserts zero journeys.
+The decision is one constant — `MVP.unverifiedRouting` in `app/js/planner.js`.
+Setting it to `false` restores the PRD gate for every query with no other code
+change. `plan(…, { strictGate: true })` does the same for a single call, and
+`tests/planner.test.js` exercises both paths, so re-enabling the gate is a
+one-line change that is already covered by tests.
 
 ---
 
@@ -152,25 +158,28 @@ review.
 ## 5. Testing
 
 ```
-npm test        19 planner/dataset tests
+npm test        22 planner/dataset tests
 npm run build   production build
 ```
 
 Coverage highlights:
 
-- gate holds for all 30 directed pairs in public mode;
+- `MVP.unverifiedRouting` is on and routing returns journeys by default;
+- `strictGate: true` still gates all 30 directed pairs;
+- directions with no recorded connection return `no_route`, not a guess;
 - every edge is `public_routing_enabled: false`;
+- fares stay `null` with `fare_status: 'unavailable'` on every journey;
 - intermediate stops are never boardable;
 - no Keke mode exists; Danfo/Korope/LT Bus never merge;
 - same-name stops stay distinct;
-- proximity requires opt-in and still never goes public;
+- proximity walking links require opt-in;
 - hub-pair matrix reproduces the research summary (23 / 4 / 3);
 - all trace coordinates fall inside Lagos bounds;
 - objectives rank deterministically.
 
 Screens were additionally rendered headlessly through `react-dom/server` in each
-state (public gate, research list, research empty, proximity-flagged, journey
-detail with an open leg) to catch runtime errors without a browser.
+state (route list, empty direction, journey detail, data, about) to catch runtime
+errors without a browser.
 
 ---
 
@@ -186,14 +195,13 @@ detail with an open leg) to catch runtime errors without a browser.
 | Authenticated admin writes | Belongs to the Next.js/PostGIS service, not the client |
 | Third-party map tiles | Data-rights and provider-dependence risk (§17, §22) |
 
-## 7. Path to enabling real routes
+## 7. Path to verified routing
 
-1. Field-verify one corridor in one direction (the app's hub-pair matrix and
-   evidence tables are the worklist).
-2. Record `board_allowed` / `alight_allowed` per stop, transfer walk geometry,
+1. Field-verify one corridor in one direction (the app's area-pair matrix and
+   freshness tables are the worklist).
+2. Record `board_allowed` / `alight_allowed` per stop, walking-path geometry,
    operating windows, legal note and a reviewer sign-off.
-3. Publish those records server-side; the client already renders
-   `verified` status, freshness dates and a working “Start guidance” path once
-   `plan()` stops short-circuiting.
-4. Flip the gate for that corridor only — the planner's eligibility filter is the
-   single switch.
+3. Publish those records server-side and set `public_routing_enabled` on the
+   verified edges.
+4. Set `MVP.unverifiedRouting` to `false` and add an eligibility filter so only
+   verified edges route — the planner's search is the single place to do it.

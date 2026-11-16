@@ -14,7 +14,8 @@ const initialState = {
   origin: null, // { kind, id, name, hub, lat, lng, detail }
   destination: null,
   objective: 'recommended', // recommended | fastest | fewest_transfers | least_walking
-  researchMode: false, // the gate: false = public mode
+  // Walking between two nearby stops was never recorded as a route, so it stays
+  // opt-in from Data & evidence (see planner `allowProximity`).
   allowProximity: false,
   plan: null,
   planning: false,
@@ -67,8 +68,6 @@ function reducer(state, action) {
       return { ...state, [action.field]: null };
     case 'objective':
       return { ...state, objective: action.objective };
-    case 'researchMode':
-      return { ...state, researchMode: action.value, plan: null, selectedJourneyId: null, selectedLegId: null };
     case 'proximity':
       return { ...state, allowProximity: action.value, plan: null, selectedJourneyId: null };
     case 'planning':

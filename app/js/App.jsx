@@ -44,11 +44,10 @@ export default function App() {
           allowProximity: state.allowProximity,
           limit: 4,
         },
-        { researchMode: state.researchMode },
       );
       dispatch({ type: 'planned', plan: result });
     }, 420);
-  }, [index, state.origin, state.destination, state.objective, state.allowProximity, state.researchMode, dispatch]);
+  }, [index, state.origin, state.destination, state.objective, state.allowProximity, dispatch]);
 
   const useLocation = useCallback(() => {
     if (!index) return;
